@@ -50,7 +50,7 @@ class AERACharacter : public ACharacter, public IAbilitySystemInterface
 	class UInputAction* LookAction;
 
 public:
-	AERACharacter();
+	AERACharacter(const FObjectInitializer& ObjectInitializer);
 
 	virtual void PostInitializeComponents();
 

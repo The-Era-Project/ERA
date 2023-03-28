@@ -14,15 +14,18 @@
 #include "AbilitySystemBlueprintLibrary.h"
 #include "AbilitySystem/Attributes/ERA_AttributeSetBase.h"
 #include "AbilitySystem/Components/ERA_AbilitySystemComponentBase.h"
+#include "ActorComponents/ERA_CharacterMovementComponent.h"
 #include "Kismet/BlueprintPlatformLibrary.h"
 
 #include "Net/UnrealNetwork.h"
+#include "ActorComponents/ERA_CharacterMovementComponent.h"
 
 
 //////////////////////////////////////////////////////////////////////////
 // AERACharacter
 
-AERACharacter::AERACharacter()
+AERACharacter::AERACharacter(const FObjectInitializer& ObjectInitializer) :
+	Super (ObjectInitializer.SetDefaultSubobjectClass<UERA_CharacterMovementComponent>(ACharacter::CharacterMovementComponentName))
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
