@@ -9,6 +9,14 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
+#include "DataAssets/CharacterDataAsset.h"
+#include "AbilitySystemComponent.h"
+#include "AbilitySystemBlueprintLibrary.h"
+#include "AbilitySystem/Attributes/ERA_AttributeSetBase.h"
+#include "AbilitySystem/Components/ERA_AbilitySystemComponentBase.h"
+#include "Kismet/BlueprintPlatformLibrary.h"
+
+#include "Net/UnrealNetwork.h"
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -49,6 +57,107 @@ AERACharacter::AERACharacter()
 
 	// Note: The skeletal mesh and anim blueprint references on the Mesh component (inherited from Character) 
 	// are set in the derived blueprint asset named ThirdPersonCharacter (to avoid direct content references in C++)
+
+	// Create the Ability System Component, and set it to be explicitly replicated
+	AbilitySystemComponent = CreateDefaultSubobject<UERA_AbilitySystemComponentBase>(TEXT("AbilitySystemComponent"));
+	AbilitySystemComponent->SetIsReplicated(true);
+	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Mixed);
+
+	AttributeSet = CreateDefaultSubobject<UERA_AttributeSetBase>(TEXT("AttributeSetBase"));
+}
+
+void AERACharacter::PostInitializeComponents()
+{
+	Super::PostInitializeComponents();
+
+	if(IsValid(CharacterDataAsset))
+	{
+		SetCharacterData(CharacterDataAsset->CharacterData);
+	}
+}
+
+FCharacterData AERACharacter::GetCharacterData() const
+{
+	return CharacterData;
+}
+
+void AERACharacter::SetCharacterData(const FCharacterData& InCharacterData)
+{
+	CharacterData = InCharacterData;
+
+	InitFromCharacterData(CharacterData);
+}
+
+void AERACharacter::OnRep_CharacterData()
+{
+	InitFromCharacterData(CharacterData, true);
+}
+
+void AERACharacter::InitFromCharacterData(const FCharacterData& InCharacterData, bool bFromReplication)
+{
+}
+
+UAbilitySystemComponent* AERACharacter::GetAbilitySystemComponent() const
+{
+	return AbilitySystemComponent;
+}
+
+bool AERACharacter::ApplyGameplayEffectToSelf(TSubclassOf<UGameplayEffect> Effect,
+	FGameplayEffectContextHandle InEffectContext)
+{
+	if(!Effect.Get()) return false;
+
+	FGameplayEffectSpecHandle SpecHandle = AbilitySystemComponent->MakeOutgoingSpec(Effect, 1, InEffectContext);
+
+	if(SpecHandle.IsValid())
+	{
+		FActiveGameplayEffectHandle ActiveGEHandle = AbilitySystemComponent->ApplyGameplayEffectSpecToSelf(*SpecHandle.Data.Get());
+		return ActiveGEHandle.WasSuccessfullyApplied();
+	}
+	return false;
+}
+
+void AERACharacter::GiveAbilities()
+{
+	if(HasAuthority() && AbilitySystemComponent)
+	{
+		for (auto DefaultAbility : CharacterData.Abilities)
+		{
+			AbilitySystemComponent->GiveAbility(FGameplayAbilitySpec(DefaultAbility));
+		}
+	}
+}
+
+void AERACharacter::ApplyStartupEffects()
+{
+	if(GetLocalRole() == ROLE_Authority)
+	{
+		FGameplayEffectContextHandle EffectContext = AbilitySystemComponent->MakeEffectContext();
+		EffectContext.AddSourceObject(this);
+
+
+		for (auto CharacterEffect : CharacterData.Effects)
+		{
+			ApplyGameplayEffectToSelf(CharacterEffect, EffectContext);
+		}
+	}
+}
+
+void AERACharacter::PossessedBy(AController* NewController)
+{
+	Super::PossessedBy(NewController);
+
+	AbilitySystemComponent->InitAbilityActorInfo(this, this);
+
+	GiveAbilities();
+	ApplyStartupEffects();
+}
+
+void AERACharacter::OnRep_PlayerState()
+{
+	Super::OnRep_PlayerState();
+
+	AbilitySystemComponent->InitAbilityActorInfo(this, this);
 }
 
 void AERACharacter::BeginPlay()
@@ -122,6 +231,13 @@ void AERACharacter::Look(const FInputActionValue& Value)
 		AddControllerYawInput(LookAxisVector.X);
 		AddControllerPitchInput(LookAxisVector.Y);
 	}
+}
+
+void AERACharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(AERACharacter, CharacterData);
 }
 
 

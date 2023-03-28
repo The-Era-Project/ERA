@@ -5,11 +5,23 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
 #include "InputActionValue.h"
+#include "Abilities/GameplayAbility.h"
+#include "AbilitySystemLog.h"
+#include "AbilitySystemInterface.h"
+#include "ERAGameTypes.h"
 #include "ERACharacter.generated.h"
 
 
+
+class UERA_AbilitySystemComponentBase;
+class UERA_AttributeSetBase;
+
+class UGameplayAbility;
+class UGameplayEffect;
+
+
 UCLASS(config=Game)
-class AERACharacter : public ACharacter
+class AERACharacter : public ACharacter, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 
@@ -39,9 +51,29 @@ class AERACharacter : public ACharacter
 
 public:
 	AERACharacter();
+
+	virtual void PostInitializeComponents();
+
+	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
+
+	bool ApplyGameplayEffectToSelf(TSubclassOf<UGameplayEffect> Effect, FGameplayEffectContextHandle InEffectContext);
 	
 
 protected:
+
+	void GiveAbilities();
+	void ApplyStartupEffects();
+
+	virtual void PossessedBy(AController* NewController) override;
+	virtual void OnRep_PlayerState() override;
+
+	UPROPERTY(EditDefaultsOnly)
+	UERA_AbilitySystemComponentBase* AbilitySystemComponent;
+	
+	UPROPERTY(Transient)
+	UERA_AttributeSetBase* AttributeSet;
+
+	
 
 	/** Called for movement input */
 	void Move(const FInputActionValue& Value);
@@ -62,5 +94,27 @@ public:
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
+
+	// Add helper functions to work wit the data assets
+
+	UFUNCTION(BlueprintCallable)
+	FCharacterData GetCharacterData() const;
+
+	UFUNCTION(BlueprintCallable)
+	void SetCharacterData(const FCharacterData& InCharacterData);
+
+protected:
+
+	UPROPERTY(ReplicatedUsing = OnRep_CharacterData)
+	FCharacterData CharacterData;
+
+	UFUNCTION()
+	void OnRep_CharacterData();
+
+	virtual void InitFromCharacterData(const FCharacterData& InCharacterData, bool bFromReplication = false);
+
+	UPROPERTY(EditDefaultsOnly)
+	class UCharacterDataAsset* CharacterDataAsset;
+	
 };
 

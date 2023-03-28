@@ -2,4 +2,11 @@
 
 
 #include "ERA_GameInstance.h"
+#include "AbilitySystemGlobals.h"
 
+void UERA_GameInstance::Init()
+{
+	Super::Init();
+
+	UAbilitySystemGlobals::Get().InitGlobalData();
+}

@@ -13,5 +13,8 @@ UCLASS()
 class ERA_API UERA_GameInstance : public UGameInstance
 {
 	GENERATED_BODY()
+
+public:
+	virtual void Init() override;
 	
 };
