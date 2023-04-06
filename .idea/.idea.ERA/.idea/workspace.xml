@@ -5,12 +5,11 @@
     <projectFile>Intermediate/ProjectFiles/UE5.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22ea8a85-9c8a-4de9-b3ff-60d25c288e54" name="Changes" comment="Added functionality for the Abilities and Effects to be driven by data assets.">
+    <list default="true" id="22ea8a85-9c8a-4de9-b3ff-60d25c288e54" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ERA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ERA/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/AbilitySystem/Attributes/ERA_AttributeSetBase.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/AbilitySystem/Attributes/ERA_AttributeSetBase.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/AbilitySystem/Attributes/ERA_AttributeSetBase.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/AbilitySystem/Attributes/ERA_AttributeSetBase.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/ERACharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ERACharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/ERACharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ERACharacter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEditor.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEditor.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/GameplayEffects/GE_CharacterDefaults.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/GameplayEffects/GE_CharacterDefaults.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -29,22 +28,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\Sam\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\Sam\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\Sam\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\Sam\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\Sam\\AppData\\Roaming\\JetBrains\\Rider2022.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\Sam\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="C++ Project.ERA">
     <configuration name="ERA" type="CppProject" factoryName="C++ Project">
       <configuration_1>
@@ -172,7 +171,8 @@
       <workItem from="1679610390390" duration="172000" />
       <workItem from="1679690367242" duration="1908000" />
       <workItem from="1679860737992" duration="2159000" />
-      <workItem from="1679947956033" duration="14617000" />
+      <workItem from="1679947956033" duration="15788000" />
+      <workItem from="1680557055195" duration="595000" />
     </task>
     <task id="LOCAL-00001" summary="Add Ability System files">
       <created>1679349178459</created>
@@ -188,7 +188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679972619735</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Create own character movement module, Initialise new Effects: Stamina, Max Movement Speed etc.">
+      <created>1679976210160</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1679976210160</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -211,7 +218,8 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Add Ability System files" />
     <MESSAGE value="Added functionality for the Abilities and Effects to be driven by data assets." />
-    <option name="LAST_COMMIT_MESSAGE" value="Added functionality for the Abilities and Effects to be driven by data assets." />
+    <MESSAGE value="Create own character movement module, Initialise new Effects: Stamina, Max Movement Speed etc." />
+    <option name="LAST_COMMIT_MESSAGE" value="Create own character movement module, Initialise new Effects: Stamina, Max Movement Speed etc." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
