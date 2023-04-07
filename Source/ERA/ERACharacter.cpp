@@ -19,6 +19,7 @@
 
 #include "Net/UnrealNetwork.h"
 #include "ActorComponents/ERA_CharacterMovementComponent.h"
+#include "ActorComponents/FootstepsComponent.h"
 
 
 //////////////////////////////////////////////////////////////////////////
@@ -67,6 +68,8 @@ AERACharacter::AERACharacter(const FObjectInitializer& ObjectInitializer) :
 	AbilitySystemComponent->SetReplicationMode(EGameplayEffectReplicationMode::Mixed);
 
 	AttributeSet = CreateDefaultSubobject<UERA_AttributeSetBase>(TEXT("AttributeSetBase"));
+
+	FootstepsComponent = CreateDefaultSubobject<UFootstepsComponent>(TEXT("FootstepsComponent"));
 }
 
 void AERACharacter::PostInitializeComponents()
@@ -89,6 +92,11 @@ void AERACharacter::SetCharacterData(const FCharacterData& InCharacterData)
 	CharacterData = InCharacterData;
 
 	InitFromCharacterData(CharacterData);
+}
+
+UFootstepsComponent* AERACharacter::GetFootstepsComponent() const
+{
+	return FootstepsComponent;
 }
 
 void AERACharacter::OnRep_CharacterData()
