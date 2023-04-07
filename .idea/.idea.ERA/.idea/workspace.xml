@@ -5,11 +5,14 @@
     <projectFile>Intermediate/ProjectFiles/UE5.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22ea8a85-9c8a-4de9-b3ff-60d25c288e54" name="Changes" comment="">
+    <list default="true" id="22ea8a85-9c8a-4de9-b3ff-60d25c288e54" name="Changes" comment="Implement functionality to enable controller based movement.">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ERA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ERA/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEditor.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEditor.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/GameplayEffects/GE_CharacterDefaults.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/GameplayEffects/GE_CharacterDefaults.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/DataAssets/Characters/BaseCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/DataAssets/Characters/BaseCharacter.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Characters/Mannequins/Animations/ABP_Manny.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/Mannequins/Animations/ABP_Manny.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/AnimInstances/ERA_AnimInstance.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/AnimInstances/ERA_AnimInstance.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/AnimInstances/ERA_AnimInstance.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/AnimInstances/ERA_AnimInstance.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/ERAGameTypes.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ERAGameTypes.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,6 +176,7 @@
       <workItem from="1679860737992" duration="2159000" />
       <workItem from="1679947956033" duration="15788000" />
       <workItem from="1680557055195" duration="595000" />
+      <workItem from="1680821497298" duration="4261000" />
     </task>
     <task id="LOCAL-00001" summary="Add Ability System files">
       <created>1679349178459</created>
@@ -195,7 +199,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679976210160</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Implement functionality to enable controller based movement.">
+      <created>1680821574424</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1680821574424</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,7 +230,8 @@
     <MESSAGE value="Add Ability System files" />
     <MESSAGE value="Added functionality for the Abilities and Effects to be driven by data assets." />
     <MESSAGE value="Create own character movement module, Initialise new Effects: Stamina, Max Movement Speed etc." />
-    <option name="LAST_COMMIT_MESSAGE" value="Create own character movement module, Initialise new Effects: Stamina, Max Movement Speed etc." />
+    <MESSAGE value="Implement functionality to enable controller based movement." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement functionality to enable controller based movement." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -13,5 +13,16 @@ UCLASS()
 class ERA_API UERA_AnimInstance : public UAnimInstance
 {
 	GENERATED_BODY()
+
+protected:
+
+	UFUNCTION(BlueprintCallable,meta = (BlueprintThreadsafe), Category = "Animation")
+	class UBlendSpace* GetLocomotionBlendSpace() const;
+
+	UFUNCTION(BlueprintCallable,meta = (BlueprintThreadsafe), Category = "Animation")
+	class UAnimSequenceBase* GetIdleAnimation() const;
+
+	UPROPERTY(BlueprintReadWrite, EditAnywhere, Category = "Animation")
+	class UCharacterAnimDataAsset* DefaultCharacterAnimDataAsset;
 	
 };
