@@ -17,7 +17,7 @@ class ERA_API UAnimNotify_Step : public UAnimNotify
 
 	virtual void Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBase* Animation) override;
 
-	UPROPERTY(EditAnywhere)
-	EFoot Foot;
+	/*UPROPERTY(EditAnywhere)
+	EFoot Foot;*/
 	
 };

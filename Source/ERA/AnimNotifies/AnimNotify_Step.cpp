@@ -17,7 +17,8 @@ void UAnimNotify_Step::Notify(USkeletalMeshComponent* MeshComp, UAnimSequenceBas
 	{
 		if (UFootstepsComponent* FootstepsComponent = Character->GetFootstepsComponent())
 		{
-			FootstepsComponent->HandleFootstep(Foot);
+			FootstepsComponent->HandleFootstep( EFoot::Left);
+			FootstepsComponent->HandleFootstep( EFoot::Right);
 		}
 	}
 }

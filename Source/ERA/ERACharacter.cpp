@@ -128,6 +128,7 @@ bool AERACharacter::ApplyGameplayEffectToSelf(TSubclassOf<UGameplayEffect> Effec
 	return false;
 }
 
+
 void AERACharacter::GiveAbilities()
 {
 	if(HasAuthority() && AbilitySystemComponent)
@@ -195,8 +196,8 @@ void AERACharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInput
 	if (UEnhancedInputComponent* EnhancedInputComponent = CastChecked<UEnhancedInputComponent>(PlayerInputComponent)) {
 		
 		//Jumping
-		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Triggered, this, &ACharacter::Jump);
-		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &ACharacter::StopJumping);
+		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Triggered, this, &AERACharacter::OnJumpActionStarted);
+		EnhancedInputComponent->BindAction(JumpAction, ETriggerEvent::Completed, this, &AERACharacter::OnJumpActionEnded);
 
 		//Moving
 		EnhancedInputComponent->BindAction(MoveAction, ETriggerEvent::Triggered, this, &AERACharacter::Move);
@@ -252,5 +253,28 @@ void AERACharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLif
 }
 
 
+void AERACharacter::Landed(const FHitResult& Hit)
+{
+	Super::Landed(Hit);
 
+	if(AbilitySystemComponent)
+	{
+		AbilitySystemComponent->RemoveActiveEffectsWithTags(InAirTags);
+	}
+}
+
+
+void AERACharacter::OnJumpActionStarted(const FInputActionValue& Value)
+{
+	FGameplayEventData Payload;
+	Payload.Instigator = this;
+	Payload.EventTag = JumpEventTag;
+
+	UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(this, JumpEventTag, Payload);
+}
+
+void AERACharacter::OnJumpActionEnded(const FInputActionValue& Value)
+{
+	StopJumping();
+}
 

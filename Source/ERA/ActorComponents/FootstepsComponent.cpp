@@ -70,7 +70,7 @@ void UFootstepsComponent::HandleFootstep(EFoot Foot)
 							}
 							if (DebugShowFootsteps > 0)
 							{
-								DrawDebugString(GetWorld(), Location, PhysicalMaterial->GetName(), nullptr, FColor::White, 4.f);
+								DrawDebugString(GetWorld(), Location, GetNameSafe(PhysicalMaterial), nullptr, FColor::White, 4.f);
 							}
 							if (DebugShowFootsteps > 0)
 							{

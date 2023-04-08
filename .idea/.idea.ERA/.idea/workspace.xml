@@ -5,14 +5,19 @@
     <projectFile>Intermediate/ProjectFiles/UE5.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22ea8a85-9c8a-4de9-b3ff-60d25c288e54" name="Changes" comment="Implement functionality to enable controller based movement.">
+    <list default="true" id="22ea8a85-9c8a-4de9-b3ff-60d25c288e54" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ERA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ERA/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/DataAssets/Characters/BaseCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/DataAssets/Characters/BaseCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Characters/Mannequins/Animations/ABP_Manny.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/Mannequins/Animations/ABP_Manny.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LevelPrototyping/Materials/MI_PrototypeGrid_TopDark.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LevelPrototyping/Materials/MI_PrototypeGrid_TopDark.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/LevelPrototyping/Materials/MI_Solid_Blue.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/LevelPrototyping/Materials/MI_Solid_Blue.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/AnimInstances/ERA_AnimInstance.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/AnimInstances/ERA_AnimInstance.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/AnimInstances/ERA_AnimInstance.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/AnimInstances/ERA_AnimInstance.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/ERAGameTypes.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ERAGameTypes.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/ActorComponents/FootstepsComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ActorComponents/FootstepsComponent.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/AnimNotifies/AnimNotify_Step.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/AnimNotifies/AnimNotify_Step.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/AnimNotifies/AnimNotify_Step.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/AnimNotifies/AnimNotify_Step.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/ERACharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ERACharacter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/ERACharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ERACharacter.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +181,8 @@
       <workItem from="1679860737992" duration="2159000" />
       <workItem from="1679947956033" duration="15788000" />
       <workItem from="1680557055195" duration="595000" />
-      <workItem from="1680821497298" duration="4261000" />
+      <workItem from="1680821497298" duration="20038000" />
+      <workItem from="1680989014565" duration="6666000" />
     </task>
     <task id="LOCAL-00001" summary="Add Ability System files">
       <created>1679349178459</created>
@@ -206,7 +212,21 @@
       <option name="project" value="LOCAL" />
       <updated>1680821574424</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Implement Default animation data assets, so we can have data driven animations.">
+      <created>1680828656444</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1680828656444</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Implement Footsteps and anim notifies for steps + material sound.">
+      <created>1680909422917</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1680909422917</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -219,7 +239,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -231,7 +263,9 @@
     <MESSAGE value="Added functionality for the Abilities and Effects to be driven by data assets." />
     <MESSAGE value="Create own character movement module, Initialise new Effects: Stamina, Max Movement Speed etc." />
     <MESSAGE value="Implement functionality to enable controller based movement." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement functionality to enable controller based movement." />
+    <MESSAGE value="Implement Default animation data assets, so we can have data driven animations." />
+    <MESSAGE value="Implement Footsteps and anim notifies for steps + material sound." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement Footsteps and anim notifies for steps + material sound." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

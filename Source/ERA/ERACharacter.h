@@ -25,6 +25,8 @@ class AERACharacter : public ACharacter, public IAbilitySystemInterface
 {
 	GENERATED_BODY()
 
+	// Enhanced Input System
+
 	/** Camera boom positioning the camera behind the character */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Camera, meta = (AllowPrivateAccess = "true"))
 	class USpringArmComponent* CameraBoom;
@@ -49,6 +51,11 @@ class AERACharacter : public ACharacter, public IAbilitySystemInterface
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* LookAction;
 
+	void OnJumpActionStarted(const FInputActionValue& Value);
+
+	void OnJumpActionEnded(const FInputActionValue& Value);
+	
+
 public:
 	AERACharacter(const FObjectInitializer& ObjectInitializer);
 
@@ -57,6 +64,8 @@ public:
 	virtual UAbilitySystemComponent* GetAbilitySystemComponent() const override;
 
 	bool ApplyGameplayEffectToSelf(TSubclassOf<UGameplayEffect> Effect, FGameplayEffectContextHandle InEffectContext);
+
+	virtual void Landed(const FHitResult& Hit) override;
 	
 
 protected:
@@ -119,7 +128,19 @@ protected:
 	class UCharacterDataAsset* CharacterDataAsset;
 
 	UPROPERTY(BlueprintReadOnly)
-	class UFootstepsComponent* FootstepsComponent;
+	class UFootstepsComponent* FootstepsComponent;	
+
+	// Gameplay Events
+
+protected:
+	
+	UPROPERTY(EditDefaultsOnly)
+	FGameplayTag JumpEventTag;
+
+	// Gameplay Tags
+protected:
+	UPROPERTY(EditDefaultsOnly)
+	FGameplayTagContainer InAirTags;
 	
 };
 
