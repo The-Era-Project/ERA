@@ -30,6 +30,12 @@ struct FCharacterAnimationData
 	
 	UPROPERTY(EditDefaultsOnly, Category = "Animation")
 	class UAnimSequenceBase* IdleAnimationAsset = nullptr;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Animation")
+	class UBlendSpace* CrouchMovementBlendspace = nullptr;
+	
+	UPROPERTY(EditDefaultsOnly, Category = "Animation")
+	class UAnimSequenceBase* CrouchIdleAnimationAsset = nullptr;
 	
 };
 

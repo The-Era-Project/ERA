@@ -43,6 +43,14 @@ class AERACharacter : public ACharacter, public IAbilitySystemInterface
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* JumpAction;
 
+	/** Crouch Input Action */
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
+	class UInputAction* CrouchInputAction;
+
+	/* Sprint Input Action */
+	UPROPERTY(EditDefaultsOnly)
+	class UInputAction* SprintInputAction;
+
 	/** Move Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* MoveAction;
@@ -54,6 +62,14 @@ class AERACharacter : public ACharacter, public IAbilitySystemInterface
 	void OnJumpActionStarted(const FInputActionValue& Value);
 
 	void OnJumpActionEnded(const FInputActionValue& Value);
+
+	void OnCrouchActionStarted(const FInputActionValue& Value);
+
+	void OnCrouchActionEnded(const FInputActionValue& Value);
+
+	void OnSprintActionStarted(const FInputActionValue& Value);
+
+	void OnSprintActionEnded(const FInputActionValue& Value);
 	
 
 public:
@@ -66,6 +82,9 @@ public:
 	bool ApplyGameplayEffectToSelf(TSubclassOf<UGameplayEffect> Effect, FGameplayEffectContextHandle InEffectContext);
 
 	virtual void Landed(const FHitResult& Hit) override;
+
+	virtual void OnStartCrouch(float HalfHeightAdjust, float ScaledHalfHeightAdjust) override;
+	virtual void OnEndCrouch(float HalfHeightAdjust, float ScaledHalfHeightAdjust) override;
 	
 
 protected:
@@ -114,6 +133,8 @@ public:
 
 	class UFootstepsComponent* GetFootstepsComponent() const;
 
+	void OnMaxMovementSpeedChanged(const FOnAttributeChangeData& Data);
+
 protected:
 
 	UPROPERTY(ReplicatedUsing = OnRep_CharacterData)
@@ -141,6 +162,19 @@ protected:
 protected:
 	UPROPERTY(EditDefaultsOnly)
 	FGameplayTagContainer InAirTags;
+
+	UPROPERTY(EditDefaultsOnly)
+	FGameplayTagContainer CrouchTags;
+
+	UPROPERTY(EditDefaultsOnly)
+	FGameplayTagContainer SprintTags;
+
+	// Gameplay Effects
+
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<UGameplayEffect> CrouchStateEffect;
+
+	FDelegateHandle MaxMovementSpeedChangedDelegateHandle;
 	
 };
 
