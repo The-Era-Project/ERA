@@ -1,6 +1,7 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "ERACharacter.h"
+#include "ERACharacter.h"
 #include "Camera/CameraComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "Components/InputComponent.h"
@@ -16,6 +17,8 @@
 #include "AbilitySystem/Components/ERA_AbilitySystemComponentBase.h"
 #include "ActorComponents/ERA_CharacterMovementComponent.h"
 #include "Kismet/BlueprintPlatformLibrary.h"
+#include "AbilitySystemLog.h"
+
 
 #include "Net/UnrealNetwork.h"
 #include "ActorComponents/ERA_CharacterMovementComponent.h"
@@ -48,6 +51,8 @@ AERACharacter::AERACharacter(const FObjectInitializer& ObjectInitializer) :
 	GetCharacterMovement()->MinAnalogWalkSpeed = 20.f;
 	GetCharacterMovement()->BrakingDecelerationWalking = 2000.f;
 
+	ERACharacterMovementComponent = Cast<UERA_CharacterMovementComponent>(GetCharacterMovement());
+
 	// Create a camera boom (pulls in towards the player if there is a collision)
 	CameraBoom = CreateDefaultSubobject<USpringArmComponent>(TEXT("CameraBoom"));
 	CameraBoom->SetupAttachment(RootComponent);
@@ -72,6 +77,8 @@ AERACharacter::AERACharacter(const FObjectInitializer& ObjectInitializer) :
 	FootstepsComponent = CreateDefaultSubobject<UFootstepsComponent>(TEXT("FootstepsComponent"));
 
 	AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(AttributeSet->GetMaxMovementSpeedAttribute()).AddUObject(this, &AERACharacter::OnMaxMovementSpeedChanged);
+
+	ERAMotionWarpingComponent = CreateDefaultSubobject<UERA_MotionWarpingComponent>(TEXT("MotionWarpingComponent"));
 }
 
 void AERACharacter::PostInitializeComponents()
@@ -310,14 +317,21 @@ void AERACharacter::OnEndCrouch(float HalfHeightAdjust, float ScaledHalfHeightAd
 	Super::OnEndCrouch(HalfHeightAdjust, ScaledHalfHeightAdjust);
 }
 
+UERA_MotionWarpingComponent* AERACharacter::GetERAMotionWarpingComponent() const
+{
+	// Return the MotionWarpingComponent
+	return ERAMotionWarpingComponent;
+}
+
 
 void AERACharacter::OnJumpActionStarted(const FInputActionValue& Value)
 {
-	FGameplayEventData Payload;
+	ERACharacterMovementComponent->TryTraversal(AbilitySystemComponent);
+	/*FGameplayEventData Payload;
 	Payload.Instigator = this;
 	Payload.EventTag = JumpEventTag;
 
-	UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(this, JumpEventTag, Payload);
+	UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(this, JumpEventTag, Payload);*/
 }
 
 void AERACharacter::OnJumpActionEnded(const FInputActionValue& Value)

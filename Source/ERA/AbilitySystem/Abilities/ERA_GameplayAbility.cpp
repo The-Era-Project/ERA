@@ -5,6 +5,7 @@
 
 #include "AbilitySystemComponent.h"
 #include "ERACharacter.h"
+#include "AbilitySystemLog.h"
 
 void UERA_GameplayAbility::ActivateAbility(const FGameplayAbilitySpecHandle Handle,
                                            const FGameplayAbilityActorInfo* ActorInfo,

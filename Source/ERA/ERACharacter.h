@@ -9,6 +9,7 @@
 #include "AbilitySystemLog.h"
 #include "AbilitySystemInterface.h"
 #include "ERAGameTypes.h"
+#include "ActorComponents/ERA_MotionWarpingComponent.h"
 #include "ERACharacter.generated.h"
 
 
@@ -19,6 +20,8 @@ class UERA_AttributeSetBase;
 class UGameplayAbility;
 class UGameplayEffect;
 
+class ERA_MotionWarpingComponent;
+class UERA_CharacterMovementComponent;
 
 UCLASS(config=Game)
 class AERACharacter : public ACharacter, public IAbilitySystemInterface
@@ -85,6 +88,8 @@ public:
 
 	virtual void OnStartCrouch(float HalfHeightAdjust, float ScaledHalfHeightAdjust) override;
 	virtual void OnEndCrouch(float HalfHeightAdjust, float ScaledHalfHeightAdjust) override;
+
+	UERA_MotionWarpingComponent* GetERAMotionWarpingComponent() const;
 	
 
 protected:
@@ -101,6 +106,10 @@ protected:
 	UPROPERTY(Transient)
 	UERA_AttributeSetBase* AttributeSet;
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = MotionWarp)
+	UERA_MotionWarpingComponent* ERAMotionWarpingComponent;
+
+	UERA_CharacterMovementComponent* ERACharacterMovementComponent;
 	
 
 	/** Called for movement input */
