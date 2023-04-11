@@ -5,19 +5,11 @@
     <projectFile>Intermediate/ProjectFiles/UE5.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22ea8a85-9c8a-4de9-b3ff-60d25c288e54" name="Changes" comment="">
+    <list default="true" id="22ea8a85-9c8a-4de9-b3ff-60d25c288e54" name="Changes" comment="Implement Vaulting - there is still a bit of cleaning up to do and smoothing it out. The character doesn't exactly jump TO the start location properly, and then doesn't jump OVER the end location properly, some testing needs to be done.">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ERA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ERA/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultGameplayTags.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGameplayTags.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/DataAssets/Characters/BaseCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/DataAssets/Characters/BaseCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ERA.uproject" beforeDir="false" afterPath="$PROJECT_DIR$/ERA.uproject" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/AbilitySystem/Abilities/ERA_GameplayAbility.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/AbilitySystem/Abilities/ERA_GameplayAbility.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/ActorComponents/ERA_CharacterMovementComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ActorComponents/ERA_CharacterMovementComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/ActorComponents/ERA_CharacterMovementComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ActorComponents/ERA_CharacterMovementComponent.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/ERA.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ERA.Build.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/ERACharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ERACharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/ERACharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ERACharacter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/ERAGameTypes.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ERAGameTypes.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Characters/Mannequins/Animations/Locomotion/Unarmed/Curves/Curve_Vault.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/Mannequins/Animations/Locomotion/Unarmed/Curves/Curve_Vault.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/AbilitySystem/Abilities/GA_Vault.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/AbilitySystem/Abilities/GA_Vault.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/AbilitySystem/Abilities/GA_Vault.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/AbilitySystem/Abilities/GA_Vault.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +18,9 @@
   </component>
   <component name="Git.Settings">
     <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/AbilitySystem/Abilities/GA_Vault.cpp" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -185,7 +180,7 @@
       <workItem from="1680989014565" duration="7582000" />
       <workItem from="1681004436813" duration="8314000" />
       <workItem from="1681083862304" duration="1692000" />
-      <workItem from="1681088594939" duration="30891000" />
+      <workItem from="1681088594939" duration="35602000" />
     </task>
     <task id="LOCAL-00001" summary="Add Ability System files">
       <created>1679349178459</created>
@@ -243,7 +238,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681086815400</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Implement Vaulting - there is still a bit of cleaning up to do and smoothing it out. The character doesn't exactly jump TO the start location properly, and then doesn't jump OVER the end location properly, some testing needs to be done.">
+      <created>1681249844713</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1681249844713</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -284,7 +286,8 @@
     <MESSAGE value="Implement Footsteps and anim notifies for steps + material sound." />
     <MESSAGE value="Implement base ability class to handle ability calls with arrays. Clean up other abilities and test using Jump." />
     <MESSAGE value="Impliment Crouching and Sprinting Abilities" />
-    <option name="LAST_COMMIT_MESSAGE" value="Impliment Crouching and Sprinting Abilities" />
+    <MESSAGE value="Implement Vaulting - there is still a bit of cleaning up to do and smoothing it out. The character doesn't exactly jump TO the start location properly, and then doesn't jump OVER the end location properly, some testing needs to be done." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement Vaulting - there is still a bit of cleaning up to do and smoothing it out. The character doesn't exactly jump TO the start location properly, and then doesn't jump OVER the end location properly, some testing needs to be done." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

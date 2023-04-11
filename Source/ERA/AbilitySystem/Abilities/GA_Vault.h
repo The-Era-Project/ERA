@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "AbilitySystem/Abilities/ERA_GameplayAbility.h"
 #include "Components/TimelineComponent.h"
+#include "Tickable.h"
 #include "GA_Vault.generated.h"
 
 class UAbilityTask_PlayMontageAndWait;
@@ -16,20 +17,15 @@ class ERA_API UGA_Vault : public UERA_GameplayAbility
 	GENERATED_BODY()
 
 	UGA_Vault();
-
 	virtual bool CommitCheck(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, FGameplayTagContainer* OptionalRelevantTags) override;
 
 	virtual void ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData) override;
 
 	virtual void EndAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, bool bReplicateEndAbility, bool bWasCancelled) override;
 
+
 protected:
 
-	/*UFUNCTION()
-	void HandleVaultTimelineUpdate(float Value);*/
-
-	UPROPERTY()
-	UTimelineComponent* VaultTimeline;
 
 	// Add our Horizontal traces
 
@@ -66,7 +62,5 @@ protected:
 
 	UPROPERTY(EditDefaultsOnly)
 	TArray<TEnumAsByte<ECollisionChannel>> CollisionChannelsToIgnore;
-	
-	/*UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Vault")
-	UCurveFloat* VaultCurve;*/
+
 };

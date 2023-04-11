@@ -11,35 +11,12 @@
 #include "ActorComponents/ERA_MotionWarpingComponent.h"
 #include "Components/TimelineComponent.h"
 
+
 UGA_Vault::UGA_Vault()
 {
 	NetExecutionPolicy = EGameplayAbilityNetExecutionPolicy::LocalPredicted;
 	InstancingPolicy = EGameplayAbilityInstancingPolicy::InstancedPerActor;
 }
-
-/*void UGA_Vault::HandleVaultTimelineUpdate(float Value)
-{
-	AERACharacter* Character = GetERACharacterFromActorInfo();
-
-	if (Character)
-	{
-		FVector CurrentLocation = FMath::Lerp(JumpToLocation, JumpOverLocation, Value);
-		Character->SetActorLocation(CurrentLocation, false);
-	}
-}*/
-
-/*
-void UGA_Vault::HandleVaultTimelineUpdate(float Value)
-{
-	AERACharacter* Character = GetERACharacterFromActorInfo();
-
-	if (Character)
-	{
-		FVector CurrentLocation = FMath::Lerp(JumpToLocation, JumpOverLocation, Value);
-		CurrentLocation.Z += VaultCurve->GetFloatValue(Value) * Character->GetActorUpVector().Z;
-		Character->SetActorLocation(CurrentLocation, false);
-	}
-}*/
 
 bool UGA_Vault::CommitCheck(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo,
                             const FGameplayAbilityActivationInfo ActivationInfo, FGameplayTagContainer* OptionalRelevantTags)
@@ -219,26 +196,13 @@ void UGA_Vault::ActivateAbility(const FGameplayAbilitySpecHandle Handle, const F
 	}
 	*/
 
-	/*
-	VaultTimeline = NewObject<UTimelineComponent>(Character);
-	VaultTimeline->CreationMethod = EComponentCreationMethod::UserConstructionScript;
-
-	FOnTimelineFloat TimelineProgress;
-	TimelineProgress.BindUFunction(this, FName("HandleVaultTimelineUpdate"));
-
-	VaultTimeline->AddInterpFloat(VaultCurve, TimelineProgress);
-	VaultTimeline->SetLooping(false);
-	VaultTimeline->SetIgnoreTimeDilation(true);
-	VaultTimeline->RegisterComponent();
-	VaultTimeline->PlayFromStart();*/
-	
-
 	MontageTask = UAbilityTask_PlayMontageAndWait::CreatePlayMontageAndWaitProxy(this, NAME_None, VaultMontage);
 
 	MontageTask->OnBlendOut.AddDynamic(this, &UGA_Vault::K2_EndAbility);
 	MontageTask->OnCompleted.AddDynamic(this, &UGA_Vault::K2_EndAbility);
 	MontageTask->OnInterrupted.AddDynamic(this, &UGA_Vault::K2_EndAbility);
 	MontageTask->OnCancelled.AddDynamic(this, &UGA_Vault::K2_EndAbility);
+
 	MontageTask->ReadyForActivation();
 }
 
@@ -280,15 +244,8 @@ void UGA_Vault::EndAbility(const FGameplayAbilitySpecHandle Handle, const FGamep
 		MotionWarpingComponent->RemoveWarpTarget(TEXT("JumpOverLocation"));
 	}
 	*/
-
-	
-	/*if (VaultTimeline)
-	{
-		VaultTimeline->Stop();
-		VaultTimeline->ConditionalBeginDestroy();
-		VaultTimeline = nullptr;
-	}*/
 	
 	
 	Super::EndAbility(Handle, ActorInfo, ActivationInfo, bReplicateEndAbility, bWasCancelled);
 }
+
