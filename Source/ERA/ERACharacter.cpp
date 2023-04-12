@@ -18,6 +18,7 @@
 #include "ActorComponents/ERA_CharacterMovementComponent.h"
 #include "Kismet/BlueprintPlatformLibrary.h"
 #include "AbilitySystemLog.h"
+#include "Inventory/InventoryComponent.h"
 
 
 #include "Net/UnrealNetwork.h"
@@ -79,6 +80,12 @@ AERACharacter::AERACharacter(const FObjectInitializer& ObjectInitializer) :
 	AbilitySystemComponent->GetGameplayAttributeValueChangeDelegate(AttributeSet->GetMaxMovementSpeedAttribute()).AddUObject(this, &AERACharacter::OnMaxMovementSpeedChanged);
 
 	ERAMotionWarpingComponent = CreateDefaultSubobject<UERA_MotionWarpingComponent>(TEXT("MotionWarpingComponent"));
+
+	// Note that adding the inventory here will destory the inventory when the character is destroyed (or dies)
+	// If you want to keep the inventory, you should create it in the game mode and pass it to the character
+	// when it is spawned.
+	InventoryComponent = CreateDefaultSubobject<UInventoryComponent>(TEXT("InventoryComponent"));
+	InventoryComponent->SetIsReplicated(true);
 }
 
 void AERACharacter::PostInitializeComponents()
@@ -267,14 +274,6 @@ void AERACharacter::Look(const FInputActionValue& Value)
 	}
 }
 
-void AERACharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
-{
-	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
-
-	DOREPLIFETIME(AERACharacter, CharacterData);
-}
-
-
 void AERACharacter::Landed(const FHitResult& Hit)
 {
 	Super::Landed(Hit);
@@ -375,11 +374,17 @@ void AERACharacter::OnSprintActionEnded(const FInputActionValue& Value)
 void AERACharacter::OnMaxMovementSpeedChanged(const FOnAttributeChangeData& Data)
 {
 	GetCharacterMovement()->MaxWalkSpeed = Data.NewValue;
-
-	// Print to the screen, so we can see it working in the demo
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(-1, 5.f, FColor::Red, FString::Printf(TEXT("Max Walk Speed: %f"), Data.NewValue));
-	}
 }
+
+
+
+void AERACharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
+{
+	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
+
+	DOREPLIFETIME(AERACharacter, CharacterData);
+	DOREPLIFETIME(AERACharacter, InventoryComponent);
+}
+
+
 

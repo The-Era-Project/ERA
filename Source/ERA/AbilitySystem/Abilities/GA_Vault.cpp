@@ -183,18 +183,16 @@ void UGA_Vault::ActivateAbility(const FGameplayAbilitySpecHandle Handle, const F
 		}
 	}
 
-	// Depricated in 5.1.1+
-	/*
+	
 	UERA_MotionWarpingComponent* MotionWarpingComponent = Character ? Character->GetERAMotionWarpingComponent() : nullptr;
 
 	if (MotionWarpingComponent)
 	{
 		MotionWarpingComponent->AddOrUpdateWarpTargetFromLocationAndRotation(TEXT("JumpToLocation"), JumpToLocation, Character->GetActorRotation());
 		MotionWarpingComponent->AddOrUpdateWarpTargetFromLocationAndRotation(TEXT("JumpOverLocation"), JumpOverLocation, Character->GetActorRotation());
-
+		// Depricated in 5.1.1+
 		// MotionWarpingComponent->SendWarpPointsToClients();
 	}
-	*/
 
 	MontageTask = UAbilityTask_PlayMontageAndWait::CreatePlayMontageAndWaitProxy(this, NAME_None, VaultMontage);
 

@@ -10,6 +10,7 @@
 #include "AbilitySystemInterface.h"
 #include "ERAGameTypes.h"
 #include "ActorComponents/ERA_MotionWarpingComponent.h"
+#include "Inventory/InventoryComponent.h"
 #include "ERACharacter.generated.h"
 
 
@@ -22,6 +23,8 @@ class UGameplayEffect;
 
 class ERA_MotionWarpingComponent;
 class UERA_CharacterMovementComponent;
+
+class UInventoryComponent;
 
 UCLASS(config=Game)
 class AERACharacter : public ACharacter, public IAbilitySystemInterface
@@ -183,7 +186,12 @@ protected:
 	UPROPERTY(EditDefaultsOnly)
 	TSubclassOf<UGameplayEffect> CrouchStateEffect;
 
+	// Delegates
 	FDelegateHandle MaxMovementSpeedChangedDelegateHandle;
+
+	// Inventory
+	UPROPERTY(EditAnywhere, Replicated)
+	UInventoryComponent* InventoryComponent = nullptr;
 	
 };
 
