@@ -152,8 +152,7 @@ if (!Super::CommitCheck(Handle, ActorInfo, ActivationInfo, OptionalRelevantTags)
 	return true;
 }
 
-void UGA_Vault::ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo,
-	const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData)
+void UGA_Vault::ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData)
 {
 	Super::ActivateAbility(Handle, ActorInfo, ActivationInfo, TriggerEventData);
 
@@ -166,7 +165,6 @@ void UGA_Vault::ActivateAbility(const FGameplayAbilitySpecHandle Handle, const F
 	AERACharacter* Character = GetERACharacterFromActorInfo();
 
 	UCharacterMovementComponent* CharacterMovement = Character ? Character->GetCharacterMovement() : nullptr;
-
 
 	if (CharacterMovement)
 	{
@@ -183,15 +181,15 @@ void UGA_Vault::ActivateAbility(const FGameplayAbilitySpecHandle Handle, const F
 		}
 	}
 
-	
 	UERA_MotionWarpingComponent* MotionWarpingComponent = Character ? Character->GetERAMotionWarpingComponent() : nullptr;
 
 	if (MotionWarpingComponent)
 	{
 		MotionWarpingComponent->AddOrUpdateWarpTargetFromLocationAndRotation(TEXT("JumpToLocation"), JumpToLocation, Character->GetActorRotation());
 		MotionWarpingComponent->AddOrUpdateWarpTargetFromLocationAndRotation(TEXT("JumpOverLocation"), JumpOverLocation, Character->GetActorRotation());
-		// Depricated in 5.1.1+
-		// MotionWarpingComponent->SendWarpPointsToClients();
+
+		// Deprecated 5.1.1+
+		//MotionWarpingComponent->SendWarpPointsToClients();
 	}
 
 	MontageTask = UAbilityTask_PlayMontageAndWait::CreatePlayMontageAndWaitProxy(this, NAME_None, VaultMontage);
@@ -200,7 +198,6 @@ void UGA_Vault::ActivateAbility(const FGameplayAbilitySpecHandle Handle, const F
 	MontageTask->OnCompleted.AddDynamic(this, &UGA_Vault::K2_EndAbility);
 	MontageTask->OnInterrupted.AddDynamic(this, &UGA_Vault::K2_EndAbility);
 	MontageTask->OnCancelled.AddDynamic(this, &UGA_Vault::K2_EndAbility);
-
 	MontageTask->ReadyForActivation();
 }
 
