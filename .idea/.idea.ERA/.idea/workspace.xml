@@ -5,10 +5,19 @@
     <projectFile>Intermediate/ProjectFiles/UE5.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22ea8a85-9c8a-4de9-b3ff-60d25c288e54" name="Changes" comment="Set up a basic inventory system. Needs more work but it's foundation is there.">
+    <list default="true" id="22ea8a85-9c8a-4de9-b3ff-60d25c288e54" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ERA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ERA/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Inventory/Items/TestItem.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Inventory/Items/TestItem.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Characters/Mannequins/Meshes/SKM_Quinn_Simple.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/Mannequins/Meshes/SKM_Quinn_Simple.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Characters/Mannequins/Meshes/SK_Mannequin.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/Mannequins/Meshes/SK_Mannequin.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/C/CP/NEC6QG8UX2VPHQ8PS0TA0L.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/C/CP/NEC6QG8UX2VPHQ8PS0TA0L.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/AbilitySystem/Abilities/GA_Vault.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/AbilitySystem/Abilities/GA_Vault.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/ERAGameTypes.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ERAGameTypes.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryComponent.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryComponent.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryItemInstance.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryItemInstance.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryItemInstance.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryItemInstance.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryList.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryList.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +186,9 @@
       <workItem from="1681004436813" duration="8314000" />
       <workItem from="1681083862304" duration="1692000" />
       <workItem from="1681088594939" duration="49935000" />
-      <workItem from="1681330415706" duration="576000" />
+      <workItem from="1681330415706" duration="954000" />
+      <workItem from="1681333543521" duration="10662000" />
+      <workItem from="1681352687527" duration="5623000" />
     </task>
     <task id="LOCAL-00001" summary="Add Ability System files">
       <created>1679349178459</created>
@@ -256,7 +267,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681276361771</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Fix Vaulting to work more naturally.">
+      <created>1681331295301</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1681331295301</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -300,7 +318,8 @@
     <MESSAGE value="Implement Vaulting - there is still a bit of cleaning up to do and smoothing it out. The character doesn't exactly jump TO the start location properly, and then doesn't jump OVER the end location properly, some testing needs to be done." />
     <MESSAGE value="Update Vault to smooth out the transition a little bit" />
     <MESSAGE value="Set up a basic inventory system. Needs more work but it's foundation is there." />
-    <option name="LAST_COMMIT_MESSAGE" value="Set up a basic inventory system. Needs more work but it's foundation is there." />
+    <MESSAGE value="Fix Vaulting to work more naturally." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix Vaulting to work more naturally." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

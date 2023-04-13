@@ -5,6 +5,8 @@
 #include "CoreMinimal.h"
 #include "ERAGameTypes.generated.h"
 
+class AItemActor;
+
 USTRUCT(BlueprintType)
 struct FCharacterData
 {
@@ -83,5 +85,10 @@ class UItemStaticData : public UObject
 public:
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
 	FName Name;
-	
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
+	TSubclassOf<AItemActor> ItemActorClass;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
+	FName AttachmentSocket = NAME_None;
 };

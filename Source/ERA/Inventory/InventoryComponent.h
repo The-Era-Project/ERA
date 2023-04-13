@@ -21,12 +21,33 @@ public:
 	virtual void InitializeComponent() override;
 	virtual bool ReplicateSubobjects(UActorChannel* Channel, FOutBunch* Bunch, FReplicationFlags* RepFlags) override;
 
+	UFUNCTION(BlueprintCallable)
+	void AddItem(TSubclassOf<UItemStaticData> InItemStaticDataClass);
+	
+	UFUNCTION(BlueprintCallable)
+	void RemoveItem(TSubclassOf<UItemStaticData> InItemStaticDataClass);
+	
+	UFUNCTION(BlueprintCallable)
+	void EquipItem(TSubclassOf<UItemStaticData> InItemStaticDataClass);
+	
+	UFUNCTION(BlueprintCallable)
+	void UnequipItem();
+
+	UFUNCTION(BlueprintCallable)
+	UInventoryItemInstance*GetEquippedItem() const;
+
+	UFUNCTION(BlueprintCallable)
+	UInventoryItemInstance* GetItemInstance(TSubclassOf<UItemStaticData> InItemStaticDataClass);
+
 protected:
 	UPROPERTY(Replicated)
 	FInventoryList InventoryList;
 	
 	UPROPERTY(EditDefaultsOnly)
 	TArray<TSubclassOf<UItemStaticData>> DefaultItems;
+
+	UPROPERTY(Replicated)
+	UInventoryItemInstance* CurrentItem = nullptr;
 
 
 public:	

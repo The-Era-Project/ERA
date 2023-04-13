@@ -9,6 +9,7 @@
 #include "Inventory/InventoryItemInstance.h"
 #include "Inventory/InventoryList.h"
 #include "Engine/ActorChannel.h"
+#include "AbilitySystemLog.h"
 
 static TAutoConsoleVariable<int32> CVarShowInventory(
 	TEXT("ShowDebugInventory"),
@@ -41,6 +42,10 @@ void UInventoryComponent::InitializeComponent()
 		{
 			InventoryList.AddItem(ItemClass);
 		}
+		if (InventoryList.GetItemsRef().Num())
+		{
+			EquipItem(InventoryList.GetItemsRef()[0].ItemInstance->ItemStaticDataClass);
+		}
 	}
 }
 
@@ -59,6 +64,56 @@ bool UInventoryComponent::ReplicateSubobjects(UActorChannel* Channel, FOutBunch*
 	}
 
 	return WroteSomething;
+}
+
+void UInventoryComponent::AddItem(TSubclassOf<UItemStaticData> InItemStaticDataClass)
+{
+	InventoryList.AddItem(InItemStaticDataClass);
+}
+
+void UInventoryComponent::RemoveItem(TSubclassOf<UItemStaticData> InItemStaticDataClass)
+{
+	InventoryList.RemoveItem(InItemStaticDataClass);
+}
+
+void UInventoryComponent::EquipItem(TSubclassOf<UItemStaticData> InItemStaticDataClass)
+{
+	if (GetOwner()->HasAuthority())
+	{
+		for (auto Item : InventoryList.GetItemsRef())
+		{
+			if (Item.ItemInstance->ItemStaticDataClass == InItemStaticDataClass)
+			{
+				Item.ItemInstance->OnEquipped(GetOwner());
+
+				CurrentItem = Item.ItemInstance;
+
+				break;
+			}
+		}
+	}
+}
+
+void UInventoryComponent::UnequipItem()
+{
+	if (GetOwner()->HasAuthority())
+	{
+		if (IsValid(CurrentItem))
+		{
+			CurrentItem->OnUnequipped();
+			CurrentItem = nullptr;
+		}
+	}
+}
+
+UInventoryItemInstance* UInventoryComponent::GetEquippedItem() const
+{
+	return CurrentItem;
+}
+
+UInventoryItemInstance* UInventoryComponent::GetItemInstance(TSubclassOf<UItemStaticData> InItemStaticDataClass)
+{
+	return CurrentItem;
 }
 
 
@@ -90,5 +145,6 @@ void UInventoryComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& 
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);
 
 	DOREPLIFETIME(UInventoryComponent, InventoryList);
+	DOREPLIFETIME(UInventoryComponent, CurrentItem);
 }
 
