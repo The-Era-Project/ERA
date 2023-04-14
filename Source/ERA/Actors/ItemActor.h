@@ -5,8 +5,12 @@
 #include "CoreMinimal.h"
 #include "Inventory/InventoryItemInstance.h"
 #include "GameFramework/Actor.h"
+#include "ERAGameTypes.h"
+#include "GameplayTagContainer.h"
+#include "Components/SphereComponent.h"
 #include "ItemActor.generated.h"
 
+class USphereComponent;
 
 UCLASS()
 class ERA_API AItemActor : public AActor
@@ -31,6 +35,17 @@ protected:
 
 	UPROPERTY(Replicated)
 	UInventoryItemInstance* ItemInstance = nullptr;
+
+	UPROPERTY(Replicated)
+	TEnumAsByte<EItemState> ItemState = EItemState::None;
+
+	UPROPERTY()
+	USphereComponent* SphereComponent = nullptr;
+
+	UFUNCTION()
+	void OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+
+	FGameplayTag OverlapEventTag;
 
 public:	
 	// Called every frame

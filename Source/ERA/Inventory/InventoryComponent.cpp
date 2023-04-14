@@ -42,11 +42,6 @@ void UInventoryComponent::InitializeComponent()
 		{
 			InventoryList.AddItem(ItemClass);
 		}
-		if (InventoryList.GetItemsRef().Num())
-		{
-			EquipItem(InventoryList.GetItemsRef()[0].ItemInstance->ItemStaticDataClass);
-		}
-		DropItem();
 	}
 }
 
@@ -60,7 +55,7 @@ bool UInventoryComponent::ReplicateSubobjects(UActorChannel* Channel, FOutBunch*
 
 		if (IsValid(ItemInstance))
 		{
-			WroteSomething = Channel->ReplicateSubobject(ItemInstance, *Bunch, *RepFlags);
+			WroteSomething |= Channel->ReplicateSubobject(ItemInstance, *Bunch, *RepFlags);
 		}
 	}
 
@@ -114,6 +109,7 @@ void UInventoryComponent::DropItem()
 		if (IsValid(CurrentItem))
 		{
 			CurrentItem->OnDropped();
+			RemoveItem(CurrentItem->ItemStaticDataClass);
 			CurrentItem = nullptr;
 		}
 	}
