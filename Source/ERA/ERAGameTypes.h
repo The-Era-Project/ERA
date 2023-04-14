@@ -91,6 +91,9 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
 	FName AttachmentSocket = NAME_None;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
+	bool bCanBeEquipped = false;
 };
 
 UENUM()

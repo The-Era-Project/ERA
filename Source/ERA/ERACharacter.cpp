@@ -233,6 +233,21 @@ void AERACharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInput
 			EnhancedInputComponent->BindAction(SprintInputAction, ETriggerEvent::Started, this, &AERACharacter::OnSprintActionStarted);
 			EnhancedInputComponent->BindAction(SprintInputAction, ETriggerEvent::Completed, this, &AERACharacter::OnSprintActionEnded);
 		}
+		
+		if (EquipNextInputAction)
+		{
+			EnhancedInputComponent->BindAction(EquipNextInputAction, ETriggerEvent::Triggered, this, &AERACharacter::OnEquipNextTriggered);
+		}
+
+		if (DropItemInputAction)
+		{
+			EnhancedInputComponent->BindAction(DropItemInputAction, ETriggerEvent::Triggered, this, &AERACharacter::OnDropItemTriggered);
+		}
+
+		if (UnequipInputAction)
+		{
+			EnhancedInputComponent->BindAction(UnequipInputAction, ETriggerEvent::Triggered, this, &AERACharacter::OnUnequipTriggered);
+		}
 
 	}
 
@@ -376,6 +391,29 @@ void AERACharacter::OnMaxMovementSpeedChanged(const FOnAttributeChangeData& Data
 	GetCharacterMovement()->MaxWalkSpeed = Data.NewValue;
 }
 
+void AERACharacter::OnDropItemTriggered(const FInputActionValue& Value)
+{
+	FGameplayEventData EventPayload;
+	EventPayload.EventTag = UInventoryComponent::DropItemActorTag;
+
+	UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(this, UInventoryComponent::DropItemActorTag, EventPayload);
+}
+
+void AERACharacter::OnEquipNextTriggered(const FInputActionValue& Value)
+{
+	FGameplayEventData EventPayload;
+	EventPayload.EventTag = UInventoryComponent::EquipNextItemActorTag;
+
+	UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(this, UInventoryComponent::EquipNextItemActorTag, EventPayload);
+}
+
+void AERACharacter::OnUnequipTriggered(const FInputActionValue& Value)
+{
+	FGameplayEventData EventPayload;
+	EventPayload.EventTag = UInventoryComponent::UnequipItemActorTag;
+
+	UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(this, UInventoryComponent::UnequipItemActorTag, EventPayload);
+}
 
 
 void AERACharacter::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const

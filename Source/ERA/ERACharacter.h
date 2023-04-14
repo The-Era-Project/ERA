@@ -57,6 +57,18 @@ class AERACharacter : public ACharacter, public IAbilitySystemInterface
 	UPROPERTY(EditDefaultsOnly)
 	class UInputAction* SprintInputAction;
 
+	/* Drop Item Action */
+	UPROPERTY(EditDefaultsOnly)
+	class UInputAction* DropItemInputAction;
+
+	/* Equip Next Item Action */
+	UPROPERTY(EditDefaultsOnly)
+	class UInputAction* EquipNextInputAction;
+
+	/* Unequip Item Action */
+	UPROPERTY(EditDefaultsOnly)
+	class UInputAction* UnequipInputAction;
+
 	/** Move Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* MoveAction;
@@ -76,6 +88,12 @@ class AERACharacter : public ACharacter, public IAbilitySystemInterface
 	void OnSprintActionStarted(const FInputActionValue& Value);
 
 	void OnSprintActionEnded(const FInputActionValue& Value);
+
+	void OnDropItemTriggered(const FInputActionValue& Value);
+
+	void OnEquipNextTriggered(const FInputActionValue& Value);
+
+	void OnUnequipTriggered(const FInputActionValue& Value);
 	
 
 public:
