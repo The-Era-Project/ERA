@@ -50,6 +50,14 @@ void UInventoryItemInstance::OnUnequipped()
 	}
 }
 
+void UInventoryItemInstance::OnDropped()
+{
+	if (ItemActor)
+	{
+		ItemActor->OnDropped();
+	}
+}
+
 void UInventoryItemInstance::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const
 {
 	Super::GetLifetimeReplicatedProps(OutLifetimeProps);

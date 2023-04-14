@@ -35,6 +35,7 @@ public:
 
 	virtual void OnEquipped(AActor* InOwner = nullptr);
 	virtual void OnUnequipped();
+	virtual void OnDropped();
 
 protected:
 

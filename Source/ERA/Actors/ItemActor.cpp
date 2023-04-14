@@ -5,6 +5,7 @@
 #include "Engine/ActorChannel.h"
 #include "Net/UnrealNetwork.h"
 #include "Inventory/InventoryItemInstance.h"
+#include "Kismet/KismetSystemLibrary.h"
 
 // Sets default values
 AItemActor::AItemActor()
@@ -30,6 +31,37 @@ void AItemActor::OnUnequipped()
 
 void AItemActor::OnDropped()
 {
+	GetRootComponent()->DetachFromComponent(FDetachmentTransformRules::KeepWorldTransform);
+
+	if (AActor* ActorOwner = GetOwner())
+	{
+		const FVector Location = GetActorLocation();
+		const FVector Forward = ActorOwner->GetActorForwardVector();
+
+		// Add trace start and end
+		constexpr float dropItemDistance = 100.f;
+		constexpr float dropItemTraceDistance = 1000.f;
+		
+		const FVector TraceStart = Location + Forward * dropItemDistance;
+		const FVector TraceEnd = TraceStart - FVector::UpVector * dropItemTraceDistance;
+
+		TArray<AActor*> ActorsToIgnore = { GetOwner() };
+		FHitResult TraceHit;
+
+		static const auto CVar = IConsoleManager::Get().FindConsoleVariable(TEXT("ShowDebugTraversal"));
+		const bool bShowTraversal = CVar->GetInt() > 0;
+		EDrawDebugTrace::Type DrawDebugType = bShowTraversal ? EDrawDebugTrace::ForDuration : EDrawDebugTrace::None;
+
+		if(UKismetSystemLibrary::LineTraceSingleByProfile(this, TraceStart, TraceEnd, TEXT("WorldStatic"), true, ActorsToIgnore, DrawDebugType, TraceHit, true))
+		{
+			if (TraceHit.bBlockingHit)
+			{
+				SetActorLocation(TraceHit.Location);
+				return;
+			}
+		}
+		SetActorLocation(TraceEnd);
+	}
 }
 
 bool AItemActor::ReplicateSubobjects(UActorChannel* Channel, FOutBunch* Bunch, FReplicationFlags* RepFlags)

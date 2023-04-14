@@ -46,6 +46,7 @@ void UInventoryComponent::InitializeComponent()
 		{
 			EquipItem(InventoryList.GetItemsRef()[0].ItemInstance->ItemStaticDataClass);
 		}
+		DropItem();
 	}
 }
 
@@ -101,6 +102,18 @@ void UInventoryComponent::UnequipItem()
 		if (IsValid(CurrentItem))
 		{
 			CurrentItem->OnUnequipped();
+			CurrentItem = nullptr;
+		}
+	}
+}
+
+void UInventoryComponent::DropItem()
+{
+	if (GetOwner()->HasAuthority())
+	{
+		if (IsValid(CurrentItem))
+		{
+			CurrentItem->OnDropped();
 			CurrentItem = nullptr;
 		}
 	}

@@ -34,6 +34,9 @@ public:
 	void UnequipItem();
 
 	UFUNCTION(BlueprintCallable)
+	void DropItem();
+
+	UFUNCTION(BlueprintCallable)
 	UInventoryItemInstance*GetEquippedItem() const;
 
 	UFUNCTION(BlueprintCallable)
