@@ -2,8 +2,9 @@
 
 
 #include "Actors/ItemActor.h"
-
+#include "DrawDebugHelpers.h"
 #include "AbilitySystemBlueprintLibrary.h"
+#include "ERACharacter.h"
 #include "Engine/ActorChannel.h"
 #include "Net/UnrealNetwork.h"
 #include "Inventory/InventoryItemInstance.h"
@@ -67,6 +68,7 @@ void AItemActor::OnDropped()
 
 		static const auto CVar = IConsoleManager::Get().FindConsoleVariable(TEXT("ShowDebugInventory"));
 		const bool bShowInventory = CVar->GetInt() > 0;
+		
 		FVector TargetLocation = TraceEnd;
 		EDrawDebugTrace::Type DrawDebugType = bShowInventory ? EDrawDebugTrace::ForDuration : EDrawDebugTrace::None;
 
@@ -87,9 +89,9 @@ void AItemActor::OnDropped()
 bool AItemActor::ReplicateSubobjects(UActorChannel* Channel, FOutBunch* Bunch, FReplicationFlags* RepFlags)
 {
 	bool WroteSomething = Super::ReplicateSubobjects(Channel, Bunch, RepFlags);
-	
-	WroteSomething |= Channel->ReplicateSubobject(ItemInstance, *Bunch, *RepFlags);
 
+	WroteSomething |= Channel->ReplicateSubobject(ItemInstance, *Bunch, *RepFlags);
+		
 	return WroteSomething;
 }
 
@@ -107,7 +109,7 @@ void AItemActor::BeginPlay()
 		}
 	}
 	SphereComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
-	SphereComponent->SetGenerateOverlapEvents(false);
+	SphereComponent->SetGenerateOverlapEvents(true);
 }
 
 void AItemActor::OnRep_ItemState()
@@ -125,24 +127,68 @@ void AItemActor::OnRep_ItemState()
 	}
 }
 
+/*
+* The OnSphereOverlap function is executed when the item actor's sphere (collision component) overlaps with another actor's component in the game world.
+* The function checks if the current item actor has authority (i.e., it is running on the server), and if it does,
+* it sends a gameplay event to the overlapping actor (OtherActor) to inform it of the overlap with the item actor.
+* The function sets up an FGameplayEventData structure, which contains information about the event,
+* such as the instigator (the item actor itself), the optional object (the ItemInstance of the item actor),
+* and an event tag (EquipItemActorTag).
+* This information can be used by the recipient actor to determine the type of event and take appropriate actions,
+* such as picking up the item or adding it to the character's inventory.
+* The actual outcome of this function depends on how the recipient actor processes the gameplay event.
+* If the recipient actor is set up to handle the event properly,
+* it might result in the character picking up the item and updating its inventory.
+* If not, there might be no visible effect in the game world.
+ */
+
+// Function to handle the sphere overlap event of the item actor
 void AItemActor::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
-                                 UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
+								 UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-	if (HasAuthority())
+
+	// write to the screen that the item actor has overlapped with another actor
+	if (GEngine)
 	{
-		FGameplayEventData EventPayload;
-		EventPayload.Instigator = this;
-		EventPayload.OptionalObject = ItemInstance;
-		EventPayload.EventTag = UInventoryComponent::EquipItemActorTag;
-		UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(OtherActor, UInventoryComponent::EquipItemActorTag, EventPayload);
+		GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Green, FString::Printf(TEXT("ItemActor overlapped with %s"), *OtherActor->GetName()));
 	}
 	
+	// Check if the current item actor has authority (e.g., it is running on the server)
+	if (HasAuthority())
+	{		
+		// Create a new FGameplayEventData structure for the payload of the gameplay event
+		FGameplayEventData EventPayload;
+
+		// Set the instigator of the event as the current item actor
+		EventPayload.Instigator = this;
+
+		// Set the optional object of the event as the ItemInstance of the current item actor
+		EventPayload.OptionalObject = ItemInstance;
+
+		// Set the event tag as the EquipItemActorTag, which may be used to identify the event type
+		EventPayload.EventTag = UInventoryComponent::EquipItemActorTag;
+
+		// Send the gameplay event with the EquipItemActorTag and the event payload to the overlapping actor (OtherActor)
+		UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(OtherActor, UInventoryComponent::EquipItemActorTag, EventPayload);
+	}
 }
 
 // Called every frame
 void AItemActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	// Temporary overlap test
+	
+	/*
+	TArray<AActor*> OverlappingActors;
+	SphereComponent->GetOverlappingActors(OverlappingActors, AERACharacter::StaticClass());
+    
+	if (OverlappingActors.Num() > 0)
+	{
+		OnSphereOverlap(SphereComponent, OverlappingActors[0], nullptr, 0, false, FHitResult());
+	}
+	*/
 
 }
 

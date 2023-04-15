@@ -3,12 +3,9 @@
 
 #include "Inventory/InventoryComponent.h"
 #include "Net/UnrealNetwork.h"
-#include "ShaderPrintParameters.h"
 #include "Engine/ActorChannel.h"
-#include "Net/UnrealNetwork.h"
 #include "Inventory/InventoryItemInstance.h"
 #include "Inventory/InventoryList.h"
-#include "Engine/ActorChannel.h"
 #include "Abilities/GameplayAbilityTypes.h"
 #include "AbilitySystemComponent.h"
 #include "Actors/ItemActor.h"
@@ -38,8 +35,13 @@ UInventoryComponent::UInventoryComponent()
 	PrimaryComponentTick.bCanEverTick = true;
 	bWantsInitializeComponent = true;
 	SetIsReplicatedByDefault(true);
-
-	UGameplayTagsManager::Get().OnLastChanceToAddNativeTags().AddUObject(this, &UInventoryComponent::AddInventoryTags);
+	
+	static bool bHandledAddingTags = false;
+	if (!bHandledAddingTags)
+	{
+		bHandledAddingTags = true;
+		UGameplayTagsManager::Get().OnLastChanceToAddNativeTags().AddUObject(this, &UInventoryComponent::AddInventoryTags);
+	}
 }
 
 void UInventoryComponent::InitializeComponent()
@@ -92,7 +94,7 @@ void UInventoryComponent::AddItemInstance(UInventoryItemInstance* InItemInstance
 {
 	if (GetOwner()->HasAuthority())
 	{
-		InventoryList.AddItem(InItemInstance);
+		InventoryList.AddItemInstance(InItemInstance);
 	}
 }
 
@@ -126,7 +128,7 @@ void UInventoryComponent::EquipItemInstance(UInventoryItemInstance* InItemInstan
 {
 	if (GetOwner()->HasAuthority())
 	{
-		for (auto Item : InventoryList.GetItemsRef())
+		for (const auto Item : InventoryList.GetItemsRef())
 		{
 			if (Item.ItemInstance == InItemInstance)
 			{
@@ -171,13 +173,8 @@ void UInventoryComponent::EquipNext()
 
 	const bool bNoItems = Items.Num() == 0;
 	const bool bOneAndEquipped = Items.Num() == 1 && CurrentItem;
-	const bool bOneAndNotEquipped = Items.Num() == 1 && !CurrentItem;
-	const bool bMoreThanOneAndNotEquipped = Items.Num() > 1 && !CurrentItem;
 
-	if (bNoItems || bOneAndEquipped || bOneAndNotEquipped)
-	{
-		return;
-	}
+	if(bNoItems || bOneAndEquipped) return;
 
 	UInventoryItemInstance* TargetItem = CurrentItem;
 
@@ -192,14 +189,17 @@ void UInventoryComponent::EquipNext()
 			}
 		}
 	}
+
 	if (CurrentItem)
 	{
 		if (TargetItem == CurrentItem)
 		{
 			return;
 		}
+
 		UnequipItem();
 	}
+
 	EquipItemInstance(TargetItem);
 }
 
@@ -243,7 +243,7 @@ void UInventoryComponent::HandleGameplayEvent(const FGameplayEventData Payload)
 	{
 		FGameplayTag EventTag = Payload.EventTag;
 
-		if (EventTag == UInventoryComponent::EquipItemActorTag)
+		if (EventTag == EquipItemActorTag)
 		{
 			if (const UInventoryItemInstance* ItemInstance = Cast<UInventoryItemInstance>(Payload.OptionalObject))
 			{
@@ -255,15 +255,15 @@ void UInventoryComponent::HandleGameplayEvent(const FGameplayEventData Payload)
 				}
 			}
 		}
-		else if (EventTag == UInventoryComponent::EquipNextItemActorTag)
+		else if (EventTag == EquipNextItemActorTag)
 		{
 			EquipNext();
 		}
-		else if (EventTag == UInventoryComponent::DropItemActorTag)
+		else if (EventTag == DropItemActorTag)
 		{
 			DropItem();
 		}
-		else if (EventTag == UInventoryComponent::UnequipItemActorTag)
+		else if (EventTag == UnequipItemActorTag)
 		{
 			UnequipItem();
 		}

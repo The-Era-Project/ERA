@@ -38,6 +38,7 @@ protected:
 
 	UPROPERTY(ReplicatedUsing = OnRep_ItemState)
 	TEnumAsByte<EItemState> ItemState = EItemState::None;
+	
 
 	UFUNCTION()
 	void OnRep_ItemState();
