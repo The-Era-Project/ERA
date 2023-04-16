@@ -401,6 +401,7 @@ void AERACharacter::OnDropItemTriggered(const FInputActionValue& Value)
 
 void AERACharacter::OnEquipNextTriggered(const FInputActionValue& Value)
 {
+	
 	FGameplayEventData EventPayload;
 	EventPayload.EventTag = UInventoryComponent::EquipNextItemActorTag;
 

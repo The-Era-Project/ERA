@@ -35,6 +35,9 @@ void AItemActor::OnEquipped()
 	ItemState = EItemState::Equipped;
 	SphereComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	SphereComponent->SetGenerateOverlapEvents(false);
+
+	// Make the item visible to the player
+	SetActorHiddenInGame(false);
 }
 
 void AItemActor::OnUnequipped()

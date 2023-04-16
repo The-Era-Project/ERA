@@ -110,7 +110,7 @@ void UInventoryComponent::EquipItem(TSubclassOf<UItemStaticData> InItemStaticDat
 {
 	if (GetOwner()->HasAuthority())
 	{
-		for (auto Item : InventoryList.GetItemsRef())
+		for (const auto Item : InventoryList.GetItemsRef())
 		{
 			if (Item.ItemInstance->ItemStaticDataClass == InItemStaticDataClass)
 			{
@@ -133,14 +133,13 @@ void UInventoryComponent::EquipItemInstance(UInventoryItemInstance* InItemInstan
 			if (Item.ItemInstance == InItemInstance)
 			{
 				Item.ItemInstance->OnEquipped(GetOwner());
-
 				CurrentItem = Item.ItemInstance;
-
 				break;
 			}
 		}
 	}
 }
+
 
 void UInventoryComponent::UnequipItem()
 {
@@ -169,16 +168,23 @@ void UInventoryComponent::DropItem()
 
 void UInventoryComponent::EquipNext()
 {
+
 	TArray<FInventoryListItem>& Items = InventoryList.GetItemsRef();
 
 	const bool bNoItems = Items.Num() == 0;
 	const bool bOneAndEquipped = Items.Num() == 1 && CurrentItem;
 
 	if(bNoItems || bOneAndEquipped) return;
+	
+	// If there's only one item and it's not equipped, equip it.
+	if (Items.Num() == 1 && !CurrentItem) {
+		EquipItemInstance(Items[0].ItemInstance);
+		return;
+	}
 
 	UInventoryItemInstance* TargetItem = CurrentItem;
 
-	for (auto Item : Items)
+	for (const auto Item : Items)
 	{
 		if (Item.ItemInstance->GetItemStaticData()->bCanBeEquipped)
 		{
@@ -192,6 +198,7 @@ void UInventoryComponent::EquipNext()
 
 	if (CurrentItem)
 	{
+		
 		if (TargetItem == CurrentItem)
 		{
 			return;
@@ -199,7 +206,7 @@ void UInventoryComponent::EquipNext()
 
 		UnequipItem();
 	}
-
+	
 	EquipItemInstance(TargetItem);
 }
 

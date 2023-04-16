@@ -38,6 +38,11 @@ void UInventoryItemInstance::OnEquipped(AActor* InOwner)
 		if (USkeletalMeshComponent* SkeletalMesh = Character ? Character->GetMesh() : nullptr)
 		{
 			ItemActor->AttachToComponent(SkeletalMesh, FAttachmentTransformRules::SnapToTargetNotIncludingScale, StaticData->AttachmentSocket);
+			if (GEngine)
+			{
+				GEngine->AddOnScreenDebugMessage(-1, 20.f, FColor::Green, FString::Printf(TEXT("ItemActor attached to socket: %s"), *StaticData->AttachmentSocket.ToString()));
+				GEngine->AddOnScreenDebugMessage(-1, 20.f, FColor::Green, FString::Printf(TEXT("ItemActor location after attachment: %s"), *ItemActor->GetActorLocation().ToString()));
+			}
 		}
 	}
 	bEquipped = true;

@@ -7,15 +7,12 @@
   <component name="ChangeListManager">
     <list default="true" id="22ea8a85-9c8a-4de9-b3ff-60d25c288e54" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ERA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ERA/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Characters/Spartan/SpartanAssets/SpartanModular/Armor/SpartanSword.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Characters/Spartan/SpartanAssets/SpartanModular/Armor/SpartanSword.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Inventory/Items/BP_TestItem.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Inventory/Items/BP_TestItem.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Inventory/Items/TestItem.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Inventory/Items/TestItem.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/1/IF/L99913TKW9UACYKCAN350Q.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/3/VZ/XR4LOO9IRR674BS50T69BJ.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/3/VZ/XR4LOO9IRR674BS50T69BJ.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ERA/Actors/ItemActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Actors/ItemActor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/Actors/ItemActor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Actors/ItemActor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/ERACharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ERACharacter.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryList.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryList.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryList.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryList.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryItemInstance.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryItemInstance.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -187,7 +184,7 @@
       <workItem from="1681330415706" duration="954000" />
       <workItem from="1681333543521" duration="10662000" />
       <workItem from="1681352687527" duration="38494000" />
-      <workItem from="1681523255316" duration="4320000" />
+      <workItem from="1681523255316" duration="13401000" />
     </task>
     <task id="LOCAL-00001" summary="Add Ability System files">
       <created>1679349178459</created>
@@ -301,7 +298,14 @@
       <option name="project" value="LOCAL" />
       <updated>1681505558666</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Pick up item on sphere overlap is now working, EquipNextItem input doesn't seem to be working yet">
+      <created>1681599654685</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1681599654685</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -350,7 +354,8 @@
     <MESSAGE value="Rough test of Drop equipped item working." />
     <MESSAGE value="Remove &quot;Hacky&quot; code to finish inventory." />
     <MESSAGE value="Add more logic to Inventory, and equipping items. Test does not work so will need to debug." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add more logic to Inventory, and equipping items. Test does not work so will need to debug." />
+    <MESSAGE value="Pick up item on sphere overlap is now working, EquipNextItem input doesn't seem to be working yet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pick up item on sphere overlap is now working, EquipNextItem input doesn't seem to be working yet" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
