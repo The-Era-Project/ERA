@@ -69,8 +69,8 @@ protected:
 
 	UPROPERTY(Replicated)
 	UInventoryItemInstance* CurrentItem = nullptr;
-
-	void HandleGameplayEvent(const FGameplayEventData Payload);
+	
+	void HandleGameplayEventInternal(FGameplayEventData Payload);
 
 	UFUNCTION(Server, Reliable, WithValidation)
 	void ServerHandleGameplayEvent(const FGameplayEventData Payload);

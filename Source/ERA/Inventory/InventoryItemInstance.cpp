@@ -8,11 +8,6 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "Net/UnrealNetwork.h"
 
-void UInventoryItemInstance::Init(TSubclassOf<UItemStaticData> InItemStaticDataClass)
-{
-	ItemStaticDataClass = InItemStaticDataClass;
-}
-
 const UItemStaticData* UInventoryItemInstance::GetItemStaticData() const
 {
 	return UERAStatics::GetItemStaticData(ItemStaticDataClass);
@@ -20,6 +15,13 @@ const UItemStaticData* UInventoryItemInstance::GetItemStaticData() const
 
 void UInventoryItemInstance::OnRep_Equipped()
 {
+	
+}
+
+
+void UInventoryItemInstance::Init(TSubclassOf<UItemStaticData> InItemStaticDataClass)
+{
+	ItemStaticDataClass = InItemStaticDataClass;
 }
 
 void UInventoryItemInstance::OnEquipped(AActor* InOwner)
@@ -38,13 +40,9 @@ void UInventoryItemInstance::OnEquipped(AActor* InOwner)
 		if (USkeletalMeshComponent* SkeletalMesh = Character ? Character->GetMesh() : nullptr)
 		{
 			ItemActor->AttachToComponent(SkeletalMesh, FAttachmentTransformRules::SnapToTargetNotIncludingScale, StaticData->AttachmentSocket);
-			if (GEngine)
-			{
-				GEngine->AddOnScreenDebugMessage(-1, 20.f, FColor::Green, FString::Printf(TEXT("ItemActor attached to socket: %s"), *StaticData->AttachmentSocket.ToString()));
-				GEngine->AddOnScreenDebugMessage(-1, 20.f, FColor::Green, FString::Printf(TEXT("ItemActor location after attachment: %s"), *ItemActor->GetActorLocation().ToString()));
-			}
 		}
 	}
+
 	bEquipped = true;
 }
 
@@ -55,6 +53,7 @@ void UInventoryItemInstance::OnUnequipped()
 		ItemActor->Destroy();
 		ItemActor = nullptr;
 	}
+
 	bEquipped = false;
 }
 
@@ -64,6 +63,7 @@ void UInventoryItemInstance::OnDropped()
 	{
 		ItemActor->OnDropped();
 	}
+
 	bEquipped = false;
 }
 

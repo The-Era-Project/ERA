@@ -19,10 +19,18 @@ AItemActor::AItemActor()
 	PrimaryActorTick.bCanEverTick = true;
 	bReplicates = true;
 	SetReplicateMovement(true);
+
+	// Create a root scene component and set it as the root component
+	RootSceneComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootSceneComponent"));
+	RootComponent = RootSceneComponent;
+
+	// Make sure the MeshComponent is created and attached
+	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComponent"));
+	MeshComponent->SetupAttachment(RootComponent);
+	
 	SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("USphereComponent"));
 	SphereComponent->SetupAttachment(RootComponent);
 	SphereComponent->OnComponentBeginOverlap.AddDynamic(this, &AItemActor::OnSphereOverlap);
-
 }
 
 void AItemActor::Init(UInventoryItemInstance* InItemInstance)
@@ -32,12 +40,20 @@ void AItemActor::Init(UInventoryItemInstance* InItemInstance)
 
 void AItemActor::OnEquipped()
 {
+	
 	ItemState = EItemState::Equipped;
 	SphereComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	SphereComponent->SetGenerateOverlapEvents(false);
 
-	// Make the item visible to the player
-	SetActorHiddenInGame(false);
+	// Make sure the item is visible to the player
+	//SetActorHiddenInGame(false);
+
+	// Get the name of the socket that the item attached to and print it to the screen
+	GEngine->AddOnScreenDebugMessage(-1, 20.f, FColor::Green, FString::Printf(TEXT("(AItemActor::OnEquipped())EQUIPPED ItemActor attached to socket: %s"), *GetAttachParentSocketName().ToString()));
+	
+
+	// UEngine print to screen the location of the item mesh
+	GEngine->AddOnScreenDebugMessage(-1, 20.f, FColor::Green, FString::Printf(TEXT("(AItemActor::OnEquipped())EQUIPPED ItemActor location after attachment: %s"), *GetActorLocation().ToString()));
 }
 
 void AItemActor::OnUnequipped()
@@ -113,6 +129,7 @@ void AItemActor::BeginPlay()
 	}
 	SphereComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	SphereComponent->SetGenerateOverlapEvents(true);
+	GEngine->AddOnScreenDebugMessage(-1, 20.f, FColor::Green, FString::Printf(TEXT("ItemActor location in BeginPlay: %s"), *GetActorLocation().ToString()));
 }
 
 void AItemActor::OnRep_ItemState()
@@ -149,12 +166,6 @@ void AItemActor::OnRep_ItemState()
 void AItemActor::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 								 UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)
 {
-
-	// write to the screen that the item actor has overlapped with another actor
-	if (GEngine)
-	{
-		GEngine->AddOnScreenDebugMessage(-1, 2.f, FColor::Green, FString::Printf(TEXT("ItemActor overlapped with %s"), *OtherActor->GetName()));
-	}
 	
 	// Check if the current item actor has authority (e.g., it is running on the server)
 	if (HasAuthority())
@@ -180,18 +191,6 @@ void AItemActor::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AActo
 void AItemActor::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
-	// Temporary overlap test
-	
-	/*
-	TArray<AActor*> OverlappingActors;
-	SphereComponent->GetOverlappingActors(OverlappingActors, AERACharacter::StaticClass());
-    
-	if (OverlappingActors.Num() > 0)
-	{
-		OnSphereOverlap(SphereComponent, OverlappingActors[0], nullptr, 0, false, FHitResult());
-	}
-	*/
 
 }
 

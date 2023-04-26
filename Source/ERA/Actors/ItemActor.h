@@ -39,10 +39,16 @@ protected:
 	UPROPERTY(ReplicatedUsing = OnRep_ItemState)
 	TEnumAsByte<EItemState> ItemState = EItemState::None;
 	
-
+	// Mesh component to render the item mesh
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	UStaticMeshComponent* MeshComponent;
+	
 	UFUNCTION()
 	void OnRep_ItemState();
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components")
+	USceneComponent* RootSceneComponent;
+	
 	UPROPERTY()
 	USphereComponent* SphereComponent = nullptr;
 
