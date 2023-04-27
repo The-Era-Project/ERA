@@ -20,9 +20,7 @@ AItemActor::AItemActor()
 	bReplicates = true;
 	SetReplicateMovement(true);
 
-	// Create a root scene component and set it as the root component
-	RootSceneComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootSceneComponent"));
-	RootComponent = RootSceneComponent;
+	
 
 	// Make sure the MeshComponent is created and attached
 	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComponent"));
@@ -46,7 +44,7 @@ void AItemActor::OnEquipped()
 	SphereComponent->SetGenerateOverlapEvents(false);
 
 	// Make sure the item is visible to the player
-	//SetActorHiddenInGame(false);
+	SetActorHiddenInGame(false);
 
 	// Get the name of the socket that the item attached to and print it to the screen
 	GEngine->AddOnScreenDebugMessage(-1, 20.f, FColor::Green, FString::Printf(TEXT("(AItemActor::OnEquipped())EQUIPPED ItemActor attached to socket: %s"), *GetAttachParentSocketName().ToString()));

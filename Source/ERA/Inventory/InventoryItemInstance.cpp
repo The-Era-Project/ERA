@@ -33,14 +33,15 @@ void UInventoryItemInstance::OnEquipped(AActor* InOwner)
 		FTransform Transform;
 		ItemActor =	World->SpawnActorDeferred<AItemActor>(StaticData->ItemActorClass, Transform, InOwner);
 		ItemActor->Init(this);
-		ItemActor->OnEquipped();
-		ItemActor->FinishSpawning(Transform);
+		
 
 		ACharacter* Character = Cast<ACharacter>(InOwner);
 		if (USkeletalMeshComponent* SkeletalMesh = Character ? Character->GetMesh() : nullptr)
 		{
 			ItemActor->AttachToComponent(SkeletalMesh, FAttachmentTransformRules::SnapToTargetNotIncludingScale, StaticData->AttachmentSocket);
 		}
+		ItemActor->OnEquipped();
+		ItemActor->FinishSpawning(Transform);
 	}
 
 	bEquipped = true;
