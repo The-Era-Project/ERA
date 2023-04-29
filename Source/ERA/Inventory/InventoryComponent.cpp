@@ -292,11 +292,6 @@ void UInventoryComponent::TickComponent(float DeltaTime, ELevelTick TickType, FA
 		{
 			UInventoryItemInstance* ItemInstance = Item.ItemInstance;
 			const UItemStaticData* ItemStaticData = ItemInstance->GetItemStaticData();
-
-			if (IsValid(ItemInstance) && IsValid(ItemStaticData))
-			{
-				GEngine->AddOnScreenDebugMessage(-1, 0, FColor::Blue, FString::Printf(TEXT("Item: %s"), *ItemStaticData->Name.ToString()));
-			}
 		}
 	}
 }

@@ -337,6 +337,12 @@ UERA_MotionWarpingComponent* AERACharacter::GetERAMotionWarpingComponent() const
 	return ERAMotionWarpingComponent;
 }
 
+UInventoryComponent* AERACharacter::GetInventoryComponent() const
+{
+	// Return the InventoryComponent
+	return InventoryComponent;
+}
+
 
 void AERACharacter::OnJumpActionStarted(const FInputActionValue& Value)
 {

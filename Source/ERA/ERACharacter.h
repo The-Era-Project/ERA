@@ -111,6 +111,8 @@ public:
 	virtual void OnEndCrouch(float HalfHeightAdjust, float ScaledHalfHeightAdjust) override;
 
 	UERA_MotionWarpingComponent* GetERAMotionWarpingComponent() const;
+
+	UInventoryComponent* GetInventoryComponent() const;
 	
 
 protected:

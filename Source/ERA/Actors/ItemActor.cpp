@@ -42,16 +42,6 @@ void AItemActor::OnEquipped()
 	ItemState = EItemState::Equipped;
 	SphereComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	SphereComponent->SetGenerateOverlapEvents(false);
-
-	// Make sure the item is visible to the player
-	SetActorHiddenInGame(false);
-
-	// Get the name of the socket that the item attached to and print it to the screen
-	GEngine->AddOnScreenDebugMessage(-1, 20.f, FColor::Green, FString::Printf(TEXT("(AItemActor::OnEquipped())EQUIPPED ItemActor attached to socket: %s"), *GetAttachParentSocketName().ToString()));
-	
-
-	// UEngine print to screen the location of the item mesh
-	GEngine->AddOnScreenDebugMessage(-1, 20.f, FColor::Green, FString::Printf(TEXT("(AItemActor::OnEquipped())EQUIPPED ItemActor location after attachment: %s"), *GetActorLocation().ToString()));
 }
 
 void AItemActor::OnUnequipped()
@@ -127,7 +117,6 @@ void AItemActor::BeginPlay()
 	}
 	SphereComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	SphereComponent->SetGenerateOverlapEvents(true);
-	GEngine->AddOnScreenDebugMessage(-1, 20.f, FColor::Green, FString::Printf(TEXT("ItemActor location in BeginPlay: %s"), *GetActorLocation().ToString()));
 }
 
 void AItemActor::OnRep_ItemState()
