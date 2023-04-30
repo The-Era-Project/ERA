@@ -22,8 +22,8 @@ AItemActor::AItemActor()
 	
 
 	// Make sure the MeshComponent is created and attached
-	MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComponent"));
-	MeshComponent->SetupAttachment(RootComponent);
+	// MeshComponent = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("MeshComponent"));
+	// MeshComponent->SetupAttachment(RootComponent);
 	
 	SphereComponent = CreateDefaultSubobject<USphereComponent>(TEXT("USphereComponent"));
 	SphereComponent->SetupAttachment(RootComponent);
@@ -39,7 +39,6 @@ void AItemActor::Init(UInventoryItemInstance* InItemInstance)
 
 void AItemActor::OnEquipped()
 {
-	
 	ItemState = EItemState::Equipped;
 	SphereComponent->SetCollisionEnabled(ECollisionEnabled::NoCollision);
 	SphereComponent->SetGenerateOverlapEvents(false);
@@ -55,7 +54,7 @@ void AItemActor::OnUnequipped()
 void AItemActor::OnDropped()
 {
 	ItemState = EItemState::Dropped;
-	
+
 	GetRootComponent()->DetachFromComponent(FDetachmentTransformRules::KeepWorldTransform);
 
 	if (AActor* ActorOwner = GetOwner())
@@ -63,34 +62,34 @@ void AItemActor::OnDropped()
 		const FVector Location = GetActorLocation();
 		const FVector Forward = ActorOwner->GetActorForwardVector();
 
-		// Add trace start and end
-		
-		constexpr float dropItemDistance = 100.f;
-		constexpr float dropItemTraceDistance = 1000.f;
-		
-		const FVector TraceStart = Location + Forward * dropItemDistance;
-		const FVector TraceEnd = TraceStart - FVector::UpVector * dropItemTraceDistance;
+		const float droppItemDist = 100.f;
+		const float droppItemTraceDist = 10000.f;
+
+		const FVector TraceStart = Location + Forward * droppItemDist;
+		const FVector TraceEnd = TraceStart - FVector::UpVector * droppItemTraceDist;
 
 		TArray<AActor*> ActorsToIgnore = { GetOwner() };
+
 		FHitResult TraceHit;
 
 		static const auto CVar = IConsoleManager::Get().FindConsoleVariable(TEXT("ShowDebugInventory"));
 		const bool bShowInventory = CVar->GetInt() > 0;
-		
-		FVector TargetLocation = TraceEnd;
-		EDrawDebugTrace::Type DrawDebugType = bShowInventory ? EDrawDebugTrace::ForDuration : EDrawDebugTrace::None;
 
-		if(UKismetSystemLibrary::LineTraceSingleByProfile(this, TraceStart, TraceEnd, TEXT("WorldStatic"), true, ActorsToIgnore, DrawDebugType, TraceHit, true))
+		FVector TargetLocation = TraceEnd;
+
+		EDrawDebugTrace::Type DebugDrawType = bShowInventory ? EDrawDebugTrace::ForDuration : EDrawDebugTrace::None;
+		if (UKismetSystemLibrary::LineTraceSingleByProfile(this, TraceStart, TraceEnd, TEXT("WorldStatic"), true, ActorsToIgnore, DebugDrawType, TraceHit, true))
 		{
 			if (TraceHit.bBlockingHit)
 			{
 				TargetLocation = TraceHit.Location;
 			}
 		}
+
 		SetActorLocation(TargetLocation);
+
 		SphereComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
-		SphereComponent->SetGenerateOverlapEvents(false);
-		
+		SphereComponent->SetGenerateOverlapEvents(true);
 	}
 }
 
@@ -106,7 +105,7 @@ bool AItemActor::ReplicateSubobjects(UActorChannel* Channel, FOutBunch* Bunch, F
 // Called when the game starts or when spawned
 void AItemActor::BeginPlay()
 {
-	Super::BeginPlay();
+	/*Super::BeginPlay();
 
 	if (HasAuthority())
 	{
@@ -119,7 +118,23 @@ void AItemActor::BeginPlay()
 	SphereComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	SphereComponent->SetGenerateOverlapEvents(true);
 
-	InitInternal();
+	InitInternal();*/
+
+	Super::BeginPlay();
+	
+	if (HasAuthority())
+	{
+		if (!IsValid(ItemInstance) && IsValid(ItemStaticDataClass))
+		{
+			ItemInstance = NewObject<UInventoryItemInstance>();
+			ItemInstance->Init(ItemStaticDataClass);
+
+			SphereComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
+			SphereComponent->SetGenerateOverlapEvents(true);
+
+			InitInternal();
+		}
+	}
 }
 
 void AItemActor::OnRep_ItemInstance(UInventoryItemInstance* OldItemInstance)
