@@ -6,6 +6,8 @@
 #include "ERAGameTypes.generated.h"
 
 class AItemActor;
+class UGameplayAbility;
+class UGameplayEffect;
 
 USTRUCT(BlueprintType)
 struct FCharacterData
@@ -98,6 +100,23 @@ public:
 	UPROPERTY(EditDefaultsOnly)
 	FCharacterAnimationData CharacterAnimationData;
 	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Abilities")
+	TArray<TSubclassOf<UGameplayAbility>> GrantedAbilities;
+};
+
+UCLASS(BlueprintType, Blueprintable)
+class UWeaponItemStaticData : public UItemStaticData
+{
+	GENERATED_BODY()
+public:
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "EffectsApplied")
+	TSubclassOf<UGameplayEffect> DamageEffect;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Mesh")
+	USkeletalMesh* SkeletalMesh;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Mesh")
+	UStaticMesh* StaticMesh;
 };
 
 UENUM()

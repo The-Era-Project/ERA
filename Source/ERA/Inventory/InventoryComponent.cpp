@@ -179,7 +179,7 @@ void UInventoryComponent::UnequipItem()
 	{
 		if (IsValid(CurrentItem))
 		{
-			CurrentItem->OnUnequipped();
+			CurrentItem->OnUnequipped(GetOwner());
 			CurrentItem = nullptr;
 		}
 	}
@@ -191,7 +191,7 @@ void UInventoryComponent::DropItem()
 	{
 		if (IsValid(CurrentItem))
 		{
-			CurrentItem->OnDropped();
+			CurrentItem->OnDropped(GetOwner());
 			RemoveItem(CurrentItem->ItemStaticDataClass);
 			CurrentItem = nullptr;
 		}
@@ -217,7 +217,7 @@ void UInventoryComponent::GameplayEventCallback(const FGameplayEventData* Payloa
 	}
 }
 
-void UInventoryComponent::HandleGameplayEventInternal(FGameplayEventData Payload)
+void UInventoryComponent::HandleGameplayEventInternal(const FGameplayEventData Payload)
 {
 	ENetRole NetRole = GetOwnerRole();
 
@@ -252,7 +252,7 @@ void UInventoryComponent::HandleGameplayEventInternal(FGameplayEventData Payload
 	}
 }
 
-void UInventoryComponent::ServerHandleGameplayEvent_Implementation(FGameplayEventData Payload)
+void UInventoryComponent::ServerHandleGameplayEvent_Implementation(const FGameplayEventData Payload)
 {
 	HandleGameplayEventInternal(Payload);
 }

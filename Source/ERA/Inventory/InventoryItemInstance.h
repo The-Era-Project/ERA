@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "ERAGameTypes.h"
+#include "GameplayAbilitySpecHandle.h"
+//#inlcude "GameplayAbilitySpec.h"
 #include "UObject/NoExportTypes.h"
 #include "InventoryItemInstance.generated.h"
 
@@ -34,11 +36,18 @@ public:
 	void OnRep_Equipped();
 
 	virtual void OnEquipped(AActor* InOwner = nullptr);
-	virtual void OnUnequipped();
-	virtual void OnDropped();
+	virtual void OnUnequipped(AActor* InOwner = nullptr);
+	virtual void OnDropped(AActor* InOwner = nullptr);
 
 protected:
 
 	UPROPERTY(Replicated)
 	AItemActor* ItemActor = nullptr;
+
+	void TryGrantAbilities(AActor* InOwner);
+
+	void TryRemoveAbilities(AActor* InOwner);
+
+	UPROPERTY()
+	TArray<FGameplayAbilitySpecHandle> GrantedAbilityHandles;
 };

@@ -19,7 +19,6 @@ AItemActor::AItemActor()
 	PrimaryActorTick.bCanEverTick = true;
 	bReplicates = true;
 	SetReplicateMovement(true);
-
 	
 
 	// Make sure the MeshComponent is created and attached
@@ -34,6 +33,8 @@ AItemActor::AItemActor()
 void AItemActor::Init(UInventoryItemInstance* InItemInstance)
 {
 	ItemInstance = InItemInstance;
+
+	InitInternal();
 }
 
 void AItemActor::OnEquipped()
@@ -117,6 +118,16 @@ void AItemActor::BeginPlay()
 	}
 	SphereComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
 	SphereComponent->SetGenerateOverlapEvents(true);
+
+	InitInternal();
+}
+
+void AItemActor::OnRep_ItemInstance(UInventoryItemInstance* OldItemInstance)
+{
+	if (IsValid(ItemInstance) && !IsValid(OldItemInstance))
+	{
+		InitInternal();
+	}
 }
 
 void AItemActor::OnRep_ItemState()
@@ -172,6 +183,10 @@ void AItemActor::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AActo
 		// Send the gameplay event with the EquipItemActorTag and the event payload to the overlapping actor (OtherActor)
 		UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(OtherActor, UInventoryComponent::EquipItemActorTag, EventPayload);
 	}
+}
+
+void AItemActor::InitInternal()
+{
 }
 
 // Called every frame

@@ -6,6 +6,9 @@
 #include "ERAStatics.h"
 #include "Actors/ItemActor.h"
 #include "Components/SkeletalMeshComponent.h"
+#include "AbilitySystemComponent.h"
+#include "AbilitySystemBlueprintLibrary.h"
+#include "ERAGameTypes.h"
 #include "Net/UnrealNetwork.h"
 
 const UItemStaticData* UInventoryItemInstance::GetItemStaticData() const
@@ -44,10 +47,12 @@ void UInventoryItemInstance::OnEquipped(AActor* InOwner)
 		ItemActor->FinishSpawning(Transform);
 	}
 
+	TryGrantAbilities(InOwner);
+
 	bEquipped = true;
 }
 
-void UInventoryItemInstance::OnUnequipped()
+void UInventoryItemInstance::OnUnequipped(AActor* InOwner)
 {
 	if (ItemActor)
 	{
@@ -55,17 +60,56 @@ void UInventoryItemInstance::OnUnequipped()
 		ItemActor = nullptr;
 	}
 
+	TryRemoveAbilities(InOwner);
+
 	bEquipped = false;
 }
 
-void UInventoryItemInstance::OnDropped()
+void UInventoryItemInstance::OnDropped(AActor* InOwner)
 {
 	if (ItemActor)
 	{
 		ItemActor->OnDropped();
 	}
 
+	TryRemoveAbilities(InOwner);
+
 	bEquipped = false;
+}
+
+void UInventoryItemInstance::TryGrantAbilities(AActor* InOwner)
+{
+	if (InOwner && InOwner->HasAuthority())
+	{
+		if (UAbilitySystemComponent* AbilityComponent = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(InOwner))
+		{
+			const UItemStaticData* StaticData = GetItemStaticData();
+
+			for (auto ItemAbility : StaticData->GrantedAbilities)
+			{
+				GrantedAbilityHandles.Add(AbilityComponent->GiveAbility(FGameplayAbilitySpec(ItemAbility)));
+			}
+		}
+	}
+}
+
+void UInventoryItemInstance::TryRemoveAbilities(AActor* InOwner)
+{
+	if (InOwner && InOwner->HasAuthority())
+	{
+		if (UAbilitySystemComponent* AbilityComponent = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(InOwner))
+		{
+			const UItemStaticData* StaticData = GetItemStaticData();
+			if (StaticData)
+			{
+				for (auto AbilityHandle : GrantedAbilityHandles)
+				{
+					AbilityComponent->ClearAbility(AbilityHandle);
+				}
+				GrantedAbilityHandles.Empty();
+			}
+		}
+	}
 }
 
 void UInventoryItemInstance::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const

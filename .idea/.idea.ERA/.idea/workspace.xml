@@ -7,6 +7,24 @@
   <component name="ChangeListManager">
     <list default="true" id="22ea8a85-9c8a-4de9-b3ff-60d25c288e54" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ERA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ERA/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Animation/BlendSpaces/BS_Jog.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Animation/BlendSpaces/BS_Jog.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Animation/Idle/AS_Idle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Animation/Idle/AS_Idle.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Animation/Vault/AM_VaultOver_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Animation/Vault/AM_VaultOver_Montage.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Characters/Carthaginian/Armor/CarthagenianSpear.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Characters/Carthaginian/Armor/CarthagenianSpear.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Characters/Carthaginian/CarthagenianBody3.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Characters/Carthaginian/CarthagenianBody3.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Characters/Spartan/SpartanAssets/SpartanModular/Armor/SpartanSword.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Characters/Spartan/SpartanAssets/SpartanModular/Armor/SpartanSword.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Characters/Spartan2/SpartanAssetsBaseSkeleton/SpartanBaseSkeleton.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Characters/Spartan2/SpartanAssetsBaseSkeleton/SpartanBaseSkeleton.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Inventory/Items/BP_TestItem.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Inventory/Items/BP_TestItem.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Inventory/Items/TestItem2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Inventory/Items/TestItem2.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Maps/ThirdPersonMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Maps/ThirdPersonMap.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/E/R8/L6JNKVJH9JS9D8RX571J7W.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/E/SD/1OA9OWX6J6EMUKWNNKFZUK.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/E/SD/1OA9OWX6J6EMUKWNNKFZUK.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/Actors/ItemActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Actors/ItemActor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/Actors/ItemActor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Actors/ItemActor.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/ERAGameTypes.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ERAGameTypes.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryComponent.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryItemInstance.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryItemInstance.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryItemInstance.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryItemInstance.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,10 +33,6 @@
   </component>
   <component name="Git.Settings">
     <option name="RESET_MODE" value="HARD" />
-  </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/AnimInstances/ERA_AnimInstance.cpp" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/AnimInstances/ERA_AnimInstance.cpp" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -35,6 +49,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.obiscr.chatgpt.settings.OpenAISettings&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
   &quot;keyToStringList&quot;: {
@@ -190,6 +205,8 @@
       <workItem from="1682466263543" duration="5784000" />
       <workItem from="1682479278155" duration="3098000" />
       <workItem from="1682628479668" duration="15677000" />
+      <workItem from="1682801488256" duration="6276000" />
+      <workItem from="1682818876577" duration="6154000" />
     </task>
     <task id="LOCAL-00001" summary="Add Ability System files">
       <created>1679349178459</created>
@@ -338,7 +355,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682746102084</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Smooth animation for new character">
+      <created>1682801968159</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1682801968159</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -392,7 +416,8 @@
     <MESSAGE value="Stuck on equipping items to the character. Commiting and pushing for assistance" />
     <MESSAGE value="Inventory equip item functionality working" />
     <MESSAGE value="Add game character skin, skeleton and combat animations. Resolve current abilities and character to use new stuff." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add game character skin, skeleton and combat animations. Resolve current abilities and character to use new stuff." />
+    <MESSAGE value="Smooth animation for new character" />
+    <option name="LAST_COMMIT_MESSAGE" value="Smooth animation for new character" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
