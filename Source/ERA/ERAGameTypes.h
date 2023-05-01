@@ -103,6 +103,9 @@ public:
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Abilities")
 	TArray<TSubclassOf<UGameplayAbility>> GrantedAbilities;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "OnGoingEffects")
+	TArray<TSubclassOf<UGameplayEffect>> OngoingEffects;
 };
 
 UCLASS(BlueprintType, Blueprintable)

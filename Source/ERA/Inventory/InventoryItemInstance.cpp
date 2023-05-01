@@ -8,6 +8,7 @@
 #include "Components/SkeletalMeshComponent.h"
 #include "AbilitySystemComponent.h"
 #include "AbilitySystemBlueprintLibrary.h"
+#include "AbilitySystemLog.h"
 #include "ERAGameTypes.h"
 #include "Net/UnrealNetwork.h"
 
@@ -49,6 +50,8 @@ void UInventoryItemInstance::OnEquipped(AActor* InOwner)
 
 	TryGrantAbilities(InOwner);
 
+	TryApplyEffects(InOwner);
+
 	bEquipped = true;
 }
 
@@ -62,6 +65,8 @@ void UInventoryItemInstance::OnUnequipped(AActor* InOwner)
 
 	TryRemoveAbilities(InOwner);
 
+	TryRemoveEffects(InOwner);
+
 	bEquipped = false;
 }
 
@@ -73,6 +78,8 @@ void UInventoryItemInstance::OnDropped(AActor* InOwner)
 	}
 
 	TryRemoveAbilities(InOwner);
+
+	TryRemoveEffects(InOwner);
 
 	bEquipped = false;
 }
@@ -115,6 +122,51 @@ void UInventoryItemInstance::TryRemoveAbilities(AActor* InOwner)
 			}
 		}
 	}
+}
+
+void UInventoryItemInstance::TryApplyEffects(AActor* InOwner)
+{
+	if (UAbilitySystemComponent* AbilityComponent = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(InOwner))
+	{
+		const UItemStaticData* ItemStaticData = GetItemStaticData();
+
+		FGameplayEffectContextHandle EffectContext = AbilityComponent->MakeEffectContext();
+
+		for (auto GameplayEffect : ItemStaticData->OngoingEffects)
+		{
+			if (!GameplayEffect.Get()) continue;
+
+			FGameplayEffectSpecHandle SpecHandle = AbilityComponent->MakeOutgoingSpec(GameplayEffect, 1, EffectContext);
+			if (SpecHandle.IsValid())
+			{
+				FActiveGameplayEffectHandle ActiveGEHandle = AbilityComponent->ApplyGameplayEffectSpecToSelf(*SpecHandle.Data.Get());
+				if (!ActiveGEHandle.WasSuccessfullyApplied())
+				{
+					ABILITY_LOG(Log, TEXT("Item %s failed to apply runtime effect %s"), *GetName(), *GetNameSafe(GameplayEffect));
+				}
+				else
+				{
+					OngoingEffectHandles.Add(ActiveGEHandle);
+				}
+			}
+		}
+	}
+}
+
+void UInventoryItemInstance::TryRemoveEffects(AActor* InOwner)
+{
+	if (UAbilitySystemComponent* AbilityComponent = UAbilitySystemBlueprintLibrary::GetAbilitySystemComponent(InOwner))
+	{
+		for (FActiveGameplayEffectHandle ActiveEffectHandle : OngoingEffectHandles)
+		{
+			if (ActiveEffectHandle.IsValid())
+			{
+				AbilityComponent->RemoveActiveGameplayEffect(ActiveEffectHandle);
+			}
+		}
+	}
+
+	OngoingEffectHandles.Empty();
 }
 
 void UInventoryItemInstance::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const

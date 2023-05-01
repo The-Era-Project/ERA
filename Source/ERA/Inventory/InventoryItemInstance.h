@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "ERAGameTypes.h"
+#include "GameplayEffectTypes.h"
 #include "GameplayAbilitySpecHandle.h"
 //#inlcude "GameplayAbilitySpec.h"
 #include "UObject/NoExportTypes.h"
@@ -51,6 +52,12 @@ protected:
 
 	void TryRemoveAbilities(AActor* InOwner);
 
+	void TryApplyEffects(AActor* InOwner);
+
+	void TryRemoveEffects(AActor* InOwner);
+
 	UPROPERTY()
 	TArray<FGameplayAbilitySpecHandle> GrantedAbilityHandles;
+
+	TArray<FActiveGameplayEffectHandle> OngoingEffectHandles;
 };
