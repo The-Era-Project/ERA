@@ -23,6 +23,11 @@ const UWeaponItemStaticData* AWeaponItemActor::GetWeaponItemStaticData() const
 	return ItemInstance ? Cast<UWeaponItemStaticData>(ItemInstance->GetItemStaticData()) : nullptr;
 }
 
+FVector AWeaponItemActor::GetProjectileSpawnLocation() const
+{
+	return MeshComponent ? MeshComponent->GetSocketLocation("ProjectileSpawnLoc") : GetActorLocation();
+}
+
 void AWeaponItemActor::InitInternal()
 {
 	Super::InitInternal();

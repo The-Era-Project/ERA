@@ -5,9 +5,27 @@
     <projectFile>Intermediate/ProjectFiles/UE5.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22ea8a85-9c8a-4de9-b3ff-60d25c288e54" name="Changes" comment="">
+    <list default="true" id="22ea8a85-9c8a-4de9-b3ff-60d25c288e54" name="Changes" comment="Weapon Items are working much better now. although can't seem to place more than one in the world at a time...">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ERA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ERA/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/Actors/ItemActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Actors/ItemActor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultGameplayTags.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGameplayTags.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/ABP_ERA_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/ABP_ERA_Character.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Animation/Vault/AM_VaultOver_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Animation/Vault/AM_VaultOver_Montage.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Inventory/Items/Weapons/CarthaginianSpear/CarthaginianSpear.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Inventory/Items/Weapons/CarthaginianSpear/CarthaginianSpear.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Input/IMC_Default.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Input/IMC_Default.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/6/2U/376UKXUZ7CXJNZ28H13DAF.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/B/QZ/W37TEP0L08HD743RG914YJ.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/C/QN/IU01D5CUW5F8EX33H2WZIH.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/E/SD/1OA9OWX6J6EMUKWNNKFZUK.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/ERACharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ERACharacter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/ERACharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ERACharacter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/ERAGameTypes.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ERAGameTypes.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryItemInstance.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryItemInstance.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryItemInstance.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryItemInstance.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/Inventory/WeaponItemActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Inventory/WeaponItemActor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/Inventory/WeaponItemActor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Inventory/WeaponItemActor.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -193,7 +211,7 @@
       <workItem from="1682628479668" duration="15677000" />
       <workItem from="1682801488256" duration="6276000" />
       <workItem from="1682818876577" duration="6992000" />
-      <workItem from="1682882159006" duration="324000" />
+      <workItem from="1682882159006" duration="10040000" />
     </task>
     <task id="LOCAL-00001" summary="Add Ability System files">
       <created>1679349178459</created>
@@ -356,7 +374,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682827040399</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="Weapon Items are working much better now. although can't seem to place more than one in the world at a time...">
+      <created>1682882742947</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1682882742948</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -412,7 +437,8 @@
     <MESSAGE value="Add game character skin, skeleton and combat animations. Resolve current abilities and character to use new stuff." />
     <MESSAGE value="Smooth animation for new character" />
     <MESSAGE value="Add Inventory abilities and expand inventory types to weapons" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Inventory abilities and expand inventory types to weapons" />
+    <MESSAGE value="Weapon Items are working much better now. although can't seem to place more than one in the world at a time..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Weapon Items are working much better now. although can't seem to place more than one in the world at a time..." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -249,6 +249,12 @@ void AERACharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInput
 			EnhancedInputComponent->BindAction(UnequipInputAction, ETriggerEvent::Triggered, this, &AERACharacter::OnUnequipTriggered);
 		}
 
+		if (AttackInputAction)
+		{
+			EnhancedInputComponent->BindAction(AttackInputAction, ETriggerEvent::Started, this, &AERACharacter::OnAttackActionStarted);
+			EnhancedInputComponent->BindAction(AttackInputAction, ETriggerEvent::Completed, this, &AERACharacter::OnAttackActionEnded);
+		}
+
 	}
 
 }
@@ -420,6 +426,22 @@ void AERACharacter::OnUnequipTriggered(const FInputActionValue& Value)
 	EventPayload.EventTag = UInventoryComponent::UnequipItemActorTag;
 
 	UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(this, UInventoryComponent::UnequipItemActorTag, EventPayload);
+}
+
+void AERACharacter::OnAttackActionStarted(const FInputActionValue& Value)
+{
+	FGameplayEventData EventPayload;
+	EventPayload.EventTag = AttackStartedEventTag;
+
+	UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(this, AttackStartedEventTag, EventPayload);
+}
+
+void AERACharacter::OnAttackActionEnded(const FInputActionValue& Value)
+{
+	FGameplayEventData EventPayload;
+	EventPayload.EventTag = AttackEndedEventTag;
+
+	UAbilitySystemBlueprintLibrary::SendGameplayEventToActor(this, AttackEndedEventTag, EventPayload);
 }
 
 

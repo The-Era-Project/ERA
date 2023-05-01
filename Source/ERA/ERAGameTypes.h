@@ -8,6 +8,7 @@
 class AItemActor;
 class UGameplayAbility;
 class UGameplayEffect;
+class UAnimMontage;
 
 USTRUCT(BlueprintType)
 struct FCharacterData
@@ -117,6 +118,9 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Mesh")
 	UStaticMesh* StaticMesh;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "AnimMontage")
+	UAnimMontage* AttackAnimMontage;
 };
 
 UENUM()
@@ -125,4 +129,12 @@ enum class EItemState : uint8
 	None UMETA(DisplayName = "None"),
 	Equipped UMETA(DisplayName = "Equipped"),
 	Dropped UMETA(DisplayName = "Dropped")
+};
+
+UENUM()
+enum class EMovementDirectionType : uint8
+{
+	None UMETA(DisplayName = "None"),
+	OrientToMovement UMETA(DisplayName = "OrientToMovement"),
+	StrafeMovement UMETA(DisplayName = "Strafe")
 };

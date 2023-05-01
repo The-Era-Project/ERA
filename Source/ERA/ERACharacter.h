@@ -69,6 +69,10 @@ class AERACharacter : public ACharacter, public IAbilitySystemInterface
 	UPROPERTY(EditDefaultsOnly)
 	class UInputAction* UnequipInputAction;
 
+	/* Attack */
+	UPROPERTY(EditDefaultsOnly)
+	class UInputAction* AttackInputAction;
+
 	/** Move Input Action */
 	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = Input, meta = (AllowPrivateAccess = "true"))
 	class UInputAction* MoveAction;
@@ -94,6 +98,10 @@ class AERACharacter : public ACharacter, public IAbilitySystemInterface
 	void OnEquipNextTriggered(const FInputActionValue& Value);
 
 	void OnUnequipTriggered(const FInputActionValue& Value);
+
+	void OnAttackActionStarted(const FInputActionValue& Value);
+
+	void OnAttackActionEnded(const FInputActionValue& Value);
 	
 
 public:
@@ -188,6 +196,12 @@ protected:
 	
 	UPROPERTY(EditDefaultsOnly)
 	FGameplayTag JumpEventTag;
+
+	UPROPERTY(EditDefaultsOnly)
+	FGameplayTag AttackStartedEventTag;
+
+	UPROPERTY(EditDefaultsOnly)
+	FGameplayTag AttackEndedEventTag;
 
 	// Gameplay Tags
 protected:

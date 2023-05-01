@@ -18,6 +18,9 @@ class ERA_API AWeaponItemActor : public AItemActor
 
 	const UWeaponItemStaticData* GetWeaponItemStaticData() const;
 
+	UFUNCTION(BlueprintPure)
+	FVector GetProjectileSpawnLocation() const;
+
 protected:
 
 	virtual void InitInternal() override;
