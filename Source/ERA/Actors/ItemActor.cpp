@@ -160,21 +160,6 @@ void AItemActor::OnRep_ItemState()
 	}
 }
 
-/*
-* The OnSphereOverlap function is executed when the item actor's sphere (collision component) overlaps with another actor's component in the game world.
-* The function checks if the current item actor has authority (i.e., it is running on the server), and if it does,
-* it sends a gameplay event to the overlapping actor (OtherActor) to inform it of the overlap with the item actor.
-* The function sets up an FGameplayEventData structure, which contains information about the event,
-* such as the instigator (the item actor itself), the optional object (the ItemInstance of the item actor),
-* and an event tag (EquipItemActorTag).
-* This information can be used by the recipient actor to determine the type of event and take appropriate actions,
-* such as picking up the item or adding it to the character's inventory.
-* The actual outcome of this function depends on how the recipient actor processes the gameplay event.
-* If the recipient actor is set up to handle the event properly,
-* it might result in the character picking up the item and updating its inventory.
-* If not, there might be no visible effect in the game world.
- */
-
 // Function to handle the sphere overlap event of the item actor
 void AItemActor::OnSphereOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 								 UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult)

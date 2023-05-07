@@ -47,6 +47,14 @@ const UItemStaticData* UERA_AnimInstance::GetEquippedItemData() const
 	return ItemInstance ? ItemInstance->GetItemStaticData() : nullptr;
 }
 
+const UItemStaticData* UERA_AnimInstance::GetEquippedWeaponItemData() const
+{
+	//AERACharacter* ERACharacter = Cast<AERACharacter>(GetOwningActor());
+	UInventoryComponent* InventoryComponent = ERACharacter ? ERACharacter->GetInventoryComponent() : nullptr;
+	UInventoryItemInstance* ItemInstance = InventoryComponent ? InventoryComponent->GetEquippedItem() : nullptr;
+	return ItemInstance ? ItemInstance->GetWeaponItemStaticData() : nullptr;
+}
+
 UBlendSpace* UERA_AnimInstance::GetLocomotionBlendSpace() const
 {
 	if (ERACharacter == nullptr)

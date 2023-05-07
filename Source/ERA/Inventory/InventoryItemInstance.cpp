@@ -17,6 +17,11 @@ const UItemStaticData* UInventoryItemInstance::GetItemStaticData() const
 	return UERAStatics::GetItemStaticData(ItemStaticDataClass);
 }
 
+const UWeaponItemStaticData* UInventoryItemInstance::GetWeaponItemStaticData() const
+{
+	return ItemStaticDataClass ? Cast<UWeaponItemStaticData>(ItemStaticDataClass->GetDefaultObject()) : nullptr;
+}
+
 void UInventoryItemInstance::OnRep_Equipped()
 {
 	

@@ -24,6 +24,8 @@ protected:
 
 	const UItemStaticData* GetEquippedItemData() const;
 
+	const UItemStaticData* GetEquippedWeaponItemData() const;
+
 	UFUNCTION(BlueprintCallable,meta = (BlueprintThreadsafe), Category = "Animation")
 	class UBlendSpace* GetLocomotionBlendSpace() const;
 

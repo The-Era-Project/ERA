@@ -5,14 +5,22 @@
     <projectFile>Intermediate/ProjectFiles/UE5.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22ea8a85-9c8a-4de9-b3ff-60d25c288e54" name="Changes" comment="Add attack abilities, try to create a Throw ability to start with line trace for projectiles - needs a bit more work but will implement movement rotation options before continuing.">
+    <list default="true" id="22ea8a85-9c8a-4de9-b3ff-60d25c288e54" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ERA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ERA/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Config/DefaultGameplayTags.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGameplayTags.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/ABP_ERA_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/ABP_ERA_Character.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Animation/Attacks/AM_Attack_01_Quick.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Animation/Attacks/AM_Attack_01_Quick.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Animation/Attacks/AS_Attack_01_Quick.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Animation/Attacks/AS_Attack_01_Quick.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Animation/SpearThrow/SpearThrowMontage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Animation/SpearThrow/SpearThrowMontage.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Assets/Characters/Spartan2/SpartanAssetsBaseSkeleton/SpartanBaseSkeleton.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Characters/Spartan2/SpartanAssetsBaseSkeleton/SpartanBaseSkeleton.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Abilities/PB_GA_ThrowWeapon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Abilities/PB_GA_ThrowWeapon.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Inventory/Items/Weapons/CarthaginianSpear/CarthaginianSpear.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Inventory/Items/Weapons/CarthaginianSpear/CarthaginianSpear.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/ActorComponents/ERA_CharacterMovementComponent.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ActorComponents/ERA_CharacterMovementComponent.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/ActorComponents/ERA_CharacterMovementComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ActorComponents/ERA_CharacterMovementComponent.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/ERAGameTypes.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ERAGameTypes.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Inventory/Items/Weapons/SpartanSword/SpartanSword.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Inventory/Items/Weapons/SpartanSword/SpartanSword.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/AbilitySystem/Abilities/GA_InventoryAbility.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/AbilitySystem/Abilities/GA_InventoryAbility.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/AbilitySystem/Abilities/GA_InventoryAbility.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/AbilitySystem/Abilities/GA_InventoryAbility.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/Actors/ItemActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Actors/ItemActor.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/AnimInstances/ERA_AnimInstance.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/AnimInstances/ERA_AnimInstance.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/AnimInstances/ERA_AnimInstance.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/AnimInstances/ERA_AnimInstance.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryItemInstance.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryItemInstance.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryItemInstance.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Inventory/InventoryItemInstance.h" afterDir="false" />
     </list>
@@ -25,7 +33,72 @@
     <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.1/Engine/Source/Developer/GraphColor/Private/graphExtensions.private.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.1/Engine/Source/Developer/GraphColor/Private/listcoll.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/AbilitySystem/Abilities/GA_InventoryAbility.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/AbilitySystem/Abilities/GA_InventoryAbility.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/AbilitySystem/Abilities/GA_InventoryAbility.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Actors/ItemActor.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Actors/ItemActor.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Actors/ItemActor.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/AnimInstances/ERA_AnimInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/AnimInstances/ERA_AnimInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/AnimInstances/ERA_AnimInstance.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/AnimInstances/ERA_AnimInstance.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/ERACharacter.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/ERACharacter.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/ERAGameTypes.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/ERAStatics.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/ERAStatics.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/ERAStatics.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/ERAStatics.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/ERAStatics.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/ERAStatics.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/ERAStatics.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/ERAStatics.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryComponent.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryComponent.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryComponent.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/InventoryItemInstance.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/WeaponItemActor.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/Inventory/WeaponItemActor.h" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -200,7 +273,9 @@
       <workItem from="1682628479668" duration="15677000" />
       <workItem from="1682801488256" duration="6276000" />
       <workItem from="1682818876577" duration="6992000" />
-      <workItem from="1682882159006" duration="16095000" />
+      <workItem from="1682882159006" duration="18018000" />
+      <workItem from="1682971186877" duration="28274000" />
+      <workItem from="1683078082136" duration="17769000" />
     </task>
     <task id="LOCAL-00001" summary="Add Ability System files">
       <created>1679349178459</created>
@@ -377,7 +452,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682908330030</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Add variable movement abilities controlled by gameplay effect tags and set up item effects.">
+      <created>1682915893258</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1682915893258</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -410,7 +492,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Add Ability System files" />
     <MESSAGE value="Added functionality for the Abilities and Effects to be driven by data assets." />
     <MESSAGE value="Create own character movement module, Initialise new Effects: Stamina, Max Movement Speed etc." />
     <MESSAGE value="Implement functionality to enable controller based movement." />
@@ -435,7 +516,8 @@
     <MESSAGE value="Add Inventory abilities and expand inventory types to weapons" />
     <MESSAGE value="Weapon Items are working much better now. although can't seem to place more than one in the world at a time..." />
     <MESSAGE value="Add attack abilities, try to create a Throw ability to start with line trace for projectiles - needs a bit more work but will implement movement rotation options before continuing." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add attack abilities, try to create a Throw ability to start with line trace for projectiles - needs a bit more work but will implement movement rotation options before continuing." />
+    <MESSAGE value="Add variable movement abilities controlled by gameplay effect tags and set up item effects." />
+    <option name="LAST_COMMIT_MESSAGE" value="Add variable movement abilities controlled by gameplay effect tags and set up item effects." />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

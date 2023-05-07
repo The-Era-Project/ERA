@@ -26,9 +26,15 @@ public:
 	UFUNCTION(BlueprintCallable)
 	const UItemStaticData* GetItemStaticData() const;
 
+	UFUNCTION(BlueprintCallable)
+	const UWeaponItemStaticData* GetWeaponItemStaticData() const;
+
 
 	UPROPERTY(Replicated)
 	TSubclassOf<UItemStaticData> ItemStaticDataClass;
+	
+	UPROPERTY(Replicated)
+	TSubclassOf<UWeaponItemStaticData> WeaponItemStaticDataClass;
 
 	UPROPERTY(ReplicatedUsing = OnRep_Equipped)
 	bool bEquipped = false;
