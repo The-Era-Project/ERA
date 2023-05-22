@@ -21,7 +21,15 @@ class ERA_API AWeaponItemActor : public AItemActor
 	UFUNCTION(BlueprintPure)
 	FVector GetProjectileSpawnLocation() const;
 
+	UFUNCTION(BlueprintCallable)
+	void PlayWeaponEffects(const FHitResult& InHitResult);
+
 protected:
+
+	UFUNCTION(NetMulticast, Reliable)
+	void MulticastPlayWeaponEffects(const FHitResult& InHitResult);
+
+	void PlayWeaponEffects_Internal(const FHitResult& InHitResult);
 
 	virtual void InitInternal() override;
 	

@@ -97,6 +97,9 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
 	bool bCanBeEquipped = false;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Item")
+	bool bCanBeThrown = false;
 	
 	UPROPERTY(EditDefaultsOnly)
 	FCharacterAnimationData CharacterAnimationData;
@@ -113,6 +116,10 @@ class UWeaponItemStaticData : public UItemStaticData
 {
 	GENERATED_BODY()
 public:
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Weapon Type")
+	bool bIsMissileWeapon = false;
+	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "EffectsApplied")
 	TSubclassOf<UGameplayEffect> DamageEffect;
 
@@ -121,9 +128,15 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Mesh")
 	UStaticMesh* StaticMesh;
+	
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "WeaponDamage")
+	float BaseDamage;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "AnimMontage")
 	UAnimMontage* AttackAnimMontage;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sound")
+	USoundBase* AttackSound;
 };
 
 UENUM()

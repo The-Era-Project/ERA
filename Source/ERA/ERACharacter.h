@@ -162,6 +162,10 @@ public:
 	/** Returns FollowCamera subobject **/
 	FORCEINLINE class UCameraComponent* GetFollowCamera() const { return FollowCamera; }
 
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Combat")
+	bool bIsAiming = false;
+
 	// Add helper functions to work wit the data assets
 
 	UFUNCTION(BlueprintCallable)

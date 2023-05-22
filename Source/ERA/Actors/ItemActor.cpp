@@ -105,21 +105,6 @@ bool AItemActor::ReplicateSubobjects(UActorChannel* Channel, FOutBunch* Bunch, F
 // Called when the game starts or when spawned
 void AItemActor::BeginPlay()
 {
-	/*Super::BeginPlay();
-
-	if (HasAuthority())
-	{
-		if (!IsValid(ItemInstance) && IsValid(ItemStaticDataClass))
-		{
-			ItemInstance = NewObject<UInventoryItemInstance>();
-			ItemInstance->Init(ItemStaticDataClass);
-		}
-	}
-	SphereComponent->SetCollisionEnabled(ECollisionEnabled::QueryOnly);
-	SphereComponent->SetGenerateOverlapEvents(true);
-
-	InitInternal();*/
-
 	Super::BeginPlay();
 	
 	if (HasAuthority())

@@ -6,6 +6,8 @@
 #include "PhysicalMaterials/PhysicalMaterial.h"
 #include "ERA_PhysicalMaterial.generated.h"
 
+class USoundBase;
+class UNiagaraSystem;
 
 UCLASS()
 class ERA_API UERA_PhysicalMaterial : public UPhysicalMaterial
@@ -14,5 +16,11 @@ class ERA_API UERA_PhysicalMaterial : public UPhysicalMaterial
 
 public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PhysicalMaterial")
-		class USoundBase* FootstepSound = nullptr;
+		USoundBase* FootstepSound = nullptr;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PhysicalMaterial")
+		USoundBase* ImpactSound = nullptr;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "PhysicalMaterial")
+		UNiagaraSystem* ImpactVFX = nullptr;
 };
