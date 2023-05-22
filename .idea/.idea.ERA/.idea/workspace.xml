@@ -5,26 +5,12 @@
     <projectFile>Intermediate/ProjectFiles/UE5.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22ea8a85-9c8a-4de9-b3ff-60d25c288e54" name="Changes" comment="">
+    <list default="true" id="22ea8a85-9c8a-4de9-b3ff-60d25c288e54" name="Changes" comment="Anim assets for Bow">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ERA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ERA/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Animation/Attacks/AM_Attack_01_Quick.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Animation/Attacks/AM_Attack_01_Quick.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Animation/Attacks/AS_Attack_01_Quick.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Animation/Attacks/AS_Attack_01_Quick.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Assets/Animation/SpearThrow/Spear_Throw_Throws_U_Seq.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Assets/Animation/SpearThrow/Spear_Throw_Throws_U_Seq.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Abilities/PB_GA_SwordAttack.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Abilities/PB_GA_SwordAttack.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Config/DefaultGameplayTags.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultGameplayTags.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Abilities/PB_GA_ThrowWeapon.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/AbilitySystem/Abilities/PB_GA_ThrowWeapon.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Inventory/Items/Weapons/SpartanSword/BP_SpartanSwordActor.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Inventory/Items/Weapons/SpartanSword/BP_SpartanSwordActor.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprints/Inventory/Items/Weapons/SpartanSword/SpartanSword.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Inventory/Items/Weapons/SpartanSword/SpartanSword.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Characters/Mannequins/Rigs/CR_Mannequin_BasicFootIK.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Characters/Mannequins/Rigs/CR_Mannequin_BasicFootIK.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/AbilitySystem/Abilities/ERA_GameplayAbility.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/AbilitySystem/Abilities/ERA_GameplayAbility.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/Actors/ItemActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Actors/ItemActor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/ERA.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ERA.Build.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/ERACharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ERACharacter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/ERAGameTypes.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ERAGameTypes.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/Inventory/WeaponItemActor.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Inventory/WeaponItemActor.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/Inventory/WeaponItemActor.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/Inventory/WeaponItemActor.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/PhysicalMaterials/ERA_PhysicalMaterial.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/PhysicalMaterials/ERA_PhysicalMaterial.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -224,7 +210,8 @@
       <workItem from="1683932802065" duration="4112000" />
       <workItem from="1684107443435" duration="1312000" />
       <workItem from="1684364508028" duration="11068000" />
-      <workItem from="1684716275744" duration="643000" />
+      <workItem from="1684716275744" duration="966000" />
+      <workItem from="1684788442160" duration="1779000" />
     </task>
     <task id="LOCAL-00001" summary="Add Ability System files">
       <created>1679349178459</created>
@@ -422,7 +409,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683849735130</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Implement basic bow movement and weapon assets">
+      <created>1684722404730</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1684722404730</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -455,7 +449,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Implement functionality to enable controller based movement." />
     <MESSAGE value="Implement Default animation data assets, so we can have data driven animations." />
     <MESSAGE value="Implement Footsteps and anim notifies for steps + material sound." />
     <MESSAGE value="Implement base ability class to handle ability calls with arrays. Clean up other abilities and test using Jump." />
@@ -480,7 +473,8 @@
     <MESSAGE value="Add variable movement abilities controlled by gameplay effect tags and set up item effects." />
     <MESSAGE value="Update for a different approach on handling the item montages to allow for different montages and weapon combat types or modes. Need to look into having different item types, probably with a enum, same with weapon combat type or mode, so like a melee weapon, throwable weapon, ranged, etc. or maybe just use booleans..." />
     <MESSAGE value="Upgrade Project to Unreal Engine 5.2" />
-    <option name="LAST_COMMIT_MESSAGE" value="Upgrade Project to Unreal Engine 5.2" />
+    <MESSAGE value="Implement basic bow movement and weapon assets" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implement basic bow movement and weapon assets" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
