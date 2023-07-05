@@ -5,19 +5,19 @@
     <projectFile>Intermediate/ProjectFiles/UE5.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="22ea8a85-9c8a-4de9-b3ff-60d25c288e54" name="Changes" comment="Anim assets for Bow">
-      <change afterPath="$PROJECT_DIR$/Source/ERA/DataAssets/Resource/ResourceInstance.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/ERA/DataAssets/Resource/ResourceInstance.h" afterDir="false" />
+    <list default="true" id="22ea8a85-9c8a-4de9-b3ff-60d25c288e54" name="Changes" comment="Add foundational logic for Factions, Cities, Resources, character roles, behavior components (like Diplomatic, combatant)">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.ERA/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.ERA/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Inventory/Items/Weapons/Bow/SD_Bow.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Inventory/Items/Weapons/Bow/SD_Bow.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprints/Inventory/Items/Weapons/SpartanSword/SpartanSword.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprints/Inventory/Items/Weapons/SpartanSword/SpartanSword.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/ThirdPerson/Blueprints/BP_ThirdPersonCharacter.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/9/BW/VH6MXW0USR816SR810XQ6P.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/9/DJ/9VI6CPOKL7252LQGNVXG1X.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/ThirdPerson/Maps/ThirdPersonMap/C/X0/VF4FDR7KVZW5OARXLGK1CS.uasset" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Plugins/Developer/RiderLink/Intermediate/FileSystemMappings.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ERA/AbilitySystem/Abilities/GA_InventoryAbility.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/AbilitySystem/Abilities/GA_InventoryAbility.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ERA/AbilitySystem/Abilities/GA_InventoryAbility.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/AbilitySystem/Abilities/GA_InventoryAbility.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/AnimInstances/ERA_AnimInstance.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/AnimInstances/ERA_AnimInstance.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/DataAssets/CharacterAnimDataAsset.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/DataAssets/CharacterDataAsset/CharacterAnimDataAsset.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/DataAssets/CharacterAnimDataAsset.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/DataAssets/CharacterDataAsset/CharacterAnimDataAsset.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/DataAssets/CharacterDataAsset.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/DataAssets/CharacterDataAsset/CharacterDataAsset.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/DataAssets/CharacterDataAsset.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/DataAssets/CharacterDataAsset/CharacterDataAsset.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/ERA/ERACharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ERACharacter.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/CharacterBehavior/CombatantComponent.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/CharacterBehavior/CombatantComponent.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/ERA/CharacterRoles/ERAWarriorCharacterRole.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/CharacterRoles/ERAWarriorCharacterRole.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ERA/ERACharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ERACharacter.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/ERA/ERAGameTypes.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/ERA/ERAGameTypes.h" afterDir="false" />
     </list>
@@ -32,6 +32,10 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.1/Engine/Source/Developer/GraphColor/Private/graphExtensions.private.h" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/../../../../../Program Files/Epic Games/UE_5.1/Engine/Source/Developer/GraphColor/Private/listcoll.h" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/AnimInstances/ERA_AnimInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/AnimInstances/ERA_AnimInstance.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/CharacterBehavior/DiplomaticComponent.cpp" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Sam/Documents/Unreal Projects/ERA/Source/ERA/CharacterBehavior/DiplomaticComponent.h" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -221,7 +225,7 @@
       <workItem from="1684364508028" duration="11068000" />
       <workItem from="1684716275744" duration="966000" />
       <workItem from="1684788442160" duration="1779000" />
-      <workItem from="1688419970752" duration="23418000" />
+      <workItem from="1688419970752" duration="34557000" />
     </task>
     <task id="LOCAL-00001" summary="Add Ability System files">
       <created>1679349178459</created>
@@ -426,7 +430,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684722404730</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Add foundational logic for Factions, Cities, Resources, character roles, behavior components (like Diplomatic, combatant)">
+      <created>1688518006955</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1688518006955</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -459,7 +470,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Implement Default animation data assets, so we can have data driven animations." />
     <MESSAGE value="Implement Footsteps and anim notifies for steps + material sound." />
     <MESSAGE value="Implement base ability class to handle ability calls with arrays. Clean up other abilities and test using Jump." />
     <MESSAGE value="Impliment Crouching and Sprinting Abilities" />
@@ -484,7 +494,8 @@
     <MESSAGE value="Update for a different approach on handling the item montages to allow for different montages and weapon combat types or modes. Need to look into having different item types, probably with a enum, same with weapon combat type or mode, so like a melee weapon, throwable weapon, ranged, etc. or maybe just use booleans..." />
     <MESSAGE value="Upgrade Project to Unreal Engine 5.2" />
     <MESSAGE value="Implement basic bow movement and weapon assets" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implement basic bow movement and weapon assets" />
+    <MESSAGE value="Add foundational logic for Factions, Cities, Resources, character roles, behavior components (like Diplomatic, combatant)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add foundational logic for Factions, Cities, Resources, character roles, behavior components (like Diplomatic, combatant)" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

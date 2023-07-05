@@ -26,6 +26,8 @@ public:
 	virtual void ActivateAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, const FGameplayEventData* TriggerEventData) override;
 
 	virtual void EndAbility(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo, bool bReplicateEndAbility, bool bWasCancelled) override;
+
+	void PlayNextMontage();
 	
 	UFUNCTION(Blueprintpure)
 	UInventoryComponent* GetInventoryComponent() const;
@@ -55,8 +57,10 @@ protected:
 	UPROPERTY()
 	UAbilityTask_PlayMontageAndWait* MontageTask = nullptr;
 	
-	// Combo counter
+	FTimerHandle ComboTimerHandle;
+
+	// Current Combo
 	UPROPERTY(Transient)
-	int32 ComboCounter = 0;
+	int32 CurrentCombo = 0;
 	
 };

@@ -114,16 +114,16 @@ public:
 UENUM(BlueprintType)
 enum class EWeaponType : uint8
 {
-	FISTS,
-	SWORD,
-	SPEAR,
-	AXE,
-	SHIELD,
-	DAGGER,
-	STAFF,
-	HEAVY_BLUNT,
-	HEAVY_BLADED,
-	BOW
+	Fists, // Melee
+	Sword, // Melee
+	Spear, // Melee and Ranged
+	Axe, // Melee
+	Shield, // Melee
+	Dagger, // Melee
+	Staff, // Melee
+	Heavy_Blunt, // Melee
+	Heavy_Bladed, // Melee
+	Bow // Ranged
  };
 
 UCLASS(BlueprintType, Blueprintable)

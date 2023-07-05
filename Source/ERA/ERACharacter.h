@@ -182,6 +182,8 @@ public:
 	class UFootstepsComponent* GetFootstepsComponent() const;
 
 	void OnMaxMovementSpeedChanged(const FOnAttributeChangeData& Data);
+	
+	USphereComponent* GetEnemyDetectionSphere() const { return EnemyDetectionSphere; }
 
 protected:
 
