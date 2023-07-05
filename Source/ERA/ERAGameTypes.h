@@ -111,6 +111,21 @@ public:
 	TArray<TSubclassOf<UGameplayEffect>> OngoingEffects;
 };
 
+UENUM(BlueprintType)
+enum class EWeaponType : uint8
+{
+	FISTS,
+	SWORD,
+	SPEAR,
+	AXE,
+	SHIELD,
+	DAGGER,
+	STAFF,
+	HEAVY_BLUNT,
+	HEAVY_BLADED,
+	BOW
+ };
+
 UCLASS(BlueprintType, Blueprintable)
 class UWeaponItemStaticData : public UItemStaticData
 {
@@ -118,7 +133,7 @@ class UWeaponItemStaticData : public UItemStaticData
 public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Weapon Type")
-	bool bIsMissileWeapon = false;
+	EWeaponType WeaponType;
 	
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "EffectsApplied")
 	TSubclassOf<UGameplayEffect> DamageEffect;
@@ -134,6 +149,12 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "AnimMontage")
 	UAnimMontage* AttackAnimMontage;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "ComboAnimMontages")
+	TArray<UAnimMontage*> ComboAttacks;
+
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "ComboAnimMontages")
+	UAnimMontage* ComboFinisher;
 
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly, Category = "Sound")
 	USoundBase* AttackSound;

@@ -28,25 +28,39 @@ void UGA_InventoryAbility::ActivateAbility(const FGameplayAbilitySpecHandle Hand
 {
 	Super::ActivateAbility(Handle, ActorInfo, ActivationInfo, TriggerEventData);
 
-	// Start a melee attack
-			if (UAnimMontage* MontageToPlay = GetEquippedItemMontage())
-			{
-				if (ACharacter* Character = Cast<ACharacter>(GetAvatarActorFromActorInfo()))
-				{
-					UAnimInstance* AnimInstance = Character->GetMesh()->GetAnimInstance();
-					if (AnimInstance)
-					{
-						AnimInstance->Montage_Play(MontageToPlay);
-						MontageTask = UAbilityTask_PlayMontageAndWait::CreatePlayMontageAndWaitProxy(this, NAME_None, MontageToPlay);
+
+	// Get the equipped weapon's static data
+	const UWeaponItemStaticData* WeaponStaticData = GetEquippedWeaponItemStaticData();
+	if (!WeaponStaticData)
+	{
+		return;
+	}
+
+	// Detect nearby enemies
+	//TArray<AActor*> OverlappingActors;
+	//EnemyDetectionSphere->GetOverlappingActors(OverlappingActors, AEnemy::StaticClass());
+
 	
-						MontageTask->OnBlendOut.AddDynamic(this, &UGA_InventoryAbility::K2_EndAbility);
-						MontageTask->OnCompleted.AddDynamic(this, &UGA_InventoryAbility::K2_EndAbility);
-						MontageTask->OnInterrupted.AddDynamic(this, &UGA_InventoryAbility::K2_EndAbility);
-						MontageTask->OnCancelled.AddDynamic(this, &UGA_InventoryAbility::K2_EndAbility);
-						MontageTask->ReadyForActivation();
-					}
-				}
-			}
+
+	// Start a melee attack
+			// if (UAnimMontage* MontageToPlay = GetEquippedItemMontage())
+			// {
+			// 	if (ACharacter* Character = Cast<ACharacter>(GetAvatarActorFromActorInfo()))
+			// 	{
+			// 		UAnimInstance* AnimInstance = Character->GetMesh()->GetAnimInstance();
+			// 		if (AnimInstance)
+			// 		{
+			// 			AnimInstance->Montage_Play(MontageToPlay);
+			// 			MontageTask = UAbilityTask_PlayMontageAndWait::CreatePlayMontageAndWaitProxy(this, NAME_None, MontageToPlay);
+			//
+			// 			MontageTask->OnBlendOut.AddDynamic(this, &UGA_InventoryAbility::K2_EndAbility);
+			// 			MontageTask->OnCompleted.AddDynamic(this, &UGA_InventoryAbility::K2_EndAbility);
+			// 			MontageTask->OnInterrupted.AddDynamic(this, &UGA_InventoryAbility::K2_EndAbility);
+			// 			MontageTask->OnCancelled.AddDynamic(this, &UGA_InventoryAbility::K2_EndAbility);
+			// 			MontageTask->ReadyForActivation();
+			// 		}
+			// 	}
+			// }
 }
 
 void UGA_InventoryAbility::EndAbility(const FGameplayAbilitySpecHandle Handle,

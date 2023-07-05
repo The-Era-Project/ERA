@@ -10,7 +10,7 @@
 #include "GameFramework/SpringArmComponent.h"
 #include "EnhancedInputComponent.h"
 #include "EnhancedInputSubsystems.h"
-#include "DataAssets/CharacterDataAsset.h"
+#include "DataAssets/CharacterDataAsset/CharacterDataAsset.h"
 #include "AbilitySystemComponent.h"
 #include "AbilitySystemBlueprintLibrary.h"
 #include "AbilitySystem/Attributes/ERA_AttributeSetBase.h"
@@ -19,6 +19,7 @@
 #include "Kismet/BlueprintPlatformLibrary.h"
 #include "AbilitySystemLog.h"
 #include "Inventory/InventoryComponent.h"
+#include "Components/SphereComponent.h"
 
 
 #include "Net/UnrealNetwork.h"
@@ -86,6 +87,11 @@ AERACharacter::AERACharacter(const FObjectInitializer& ObjectInitializer) :
 	// when it is spawned.
 	InventoryComponent = CreateDefaultSubobject<UInventoryComponent>(TEXT("InventoryComponent"));
 	InventoryComponent->SetIsReplicated(true);
+
+	// Create the enemy detection sphere
+	EnemyDetectionSphere = CreateDefaultSubobject<USphereComponent>(TEXT("EnemyDetectionSphere"));
+	EnemyDetectionSphere->SetupAttachment(RootComponent);
+	EnemyDetectionSphere->SetSphereRadius(500.0f);
 }
 
 void AERACharacter::PostInitializeComponents()

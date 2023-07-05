@@ -11,6 +11,8 @@
 #include "ERAGameTypes.h"
 #include "ActorComponents/ERA_MotionWarpingComponent.h"
 #include "Inventory/InventoryComponent.h"
+#include "Components/SphereComponent.h"
+#include "DataAssets/FactionDataAsset/Faction.h"
 #include "ERACharacter.generated.h"
 
 
@@ -121,6 +123,9 @@ public:
 	UERA_MotionWarpingComponent* GetERAMotionWarpingComponent() const;
 
 	UInventoryComponent* GetInventoryComponent() const;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Faction")
+	UFaction* Faction;
 	
 
 protected:
@@ -192,7 +197,11 @@ protected:
 	class UCharacterDataAsset* CharacterDataAsset;
 
 	UPROPERTY(BlueprintReadOnly)
-	class UFootstepsComponent* FootstepsComponent;	
+	class UFootstepsComponent* FootstepsComponent;
+
+	// Collision shape for detecting enemies
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Collision")
+	USphereComponent* EnemyDetectionSphere;
 
 	// Gameplay Events
 

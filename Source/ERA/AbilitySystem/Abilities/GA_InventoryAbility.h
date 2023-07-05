@@ -55,4 +55,8 @@ protected:
 	UPROPERTY()
 	UAbilityTask_PlayMontageAndWait* MontageTask = nullptr;
 	
+	// Combo counter
+	UPROPERTY(Transient)
+	int32 ComboCounter = 0;
+	
 };

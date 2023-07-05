@@ -6,7 +6,7 @@
 #include "Animation/AnimSequenceBase.h"
 #include "Animation/AnimationAsset.h"
 #include "Animation/BlendSpace.h"
-#include "DataAssets/CharacterAnimDataAsset.h"
+#include "DataAssets/CharacterDataAsset/CharacterAnimDataAsset.h"
 #include "Inventory/InventoryComponent.h"
 #include "Inventory/InventoryItemInstance.h"
 #include "GameFramework/CharacterMovementComponent.h"
